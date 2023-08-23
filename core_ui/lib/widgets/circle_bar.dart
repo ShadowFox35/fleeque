@@ -14,9 +14,11 @@ class CircleBar extends StatelessWidget {
       height: AppDimens.size_6,
       width: AppDimens.size_6,
       decoration: BoxDecoration(
-          color: isActive ? AppColors.black : AppColors.grey,
-          borderRadius:
-              const BorderRadius.all(Radius.circular(AppDimens.radius_10))),
+        color: isActive ? AppColors.black : AppColors.grey,
+        borderRadius: const BorderRadius.all(
+          Radius.circular(AppDimens.radius_10),
+        ),
+      ),
     );
   }
 }
