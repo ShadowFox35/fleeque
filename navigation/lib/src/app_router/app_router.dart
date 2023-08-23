@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 
 import 'package:welcome/welcome.dart';
-
+import 'package:carousel/carousel.dart';
 import 'package:navigation_bar/navigation_bar.dart';
 import 'package:influencer/influencer.dart';
 import 'package:home/home.dart';
@@ -19,6 +19,10 @@ part 'app_router.gr.dart';
       page: WelcomeScreen,
       path: '/',
       initial: true,
+    ),
+    AutoRoute(
+      page: CarouselScreen,
+      path: 'carousel',
     ),
     AutoRoute(
       page: NavigationBarScreen,

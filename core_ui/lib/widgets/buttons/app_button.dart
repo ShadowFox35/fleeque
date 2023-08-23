@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:core_ui/core_ui.dart';
 
 class AppButton extends StatelessWidget {
-  final String buttonText; // Параметр для хранения текста кнопки
+  final String buttonText;
 
   const AppButton({Key? key, required this.buttonText}) : super(key: key);
 

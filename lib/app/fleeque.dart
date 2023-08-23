@@ -10,7 +10,7 @@ class Fleeque extends StatefulWidget {
 }
 
 class _FleequeState extends State<Fleeque> {
-  final _appRouter = AppRouter();
+  final _appRouter = appLocator.get<AppRouter>();
   @override
   Widget build(BuildContext context) {
     return MaterialApp.router(

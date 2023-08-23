@@ -7,13 +7,13 @@ class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
   final _appRouter = appLocator<AppRouter>();
 
   WelcomeBloc() : super(WelcomeState()) {
-    on<NavigateToHomeEvent>(_goHome);
+    on<NavigateToCarouselEvent>(_goCarousel);
   }
 
-  Future<void> _goHome(
-    NavigateToHomeEvent event,
+  Future<void> _goCarousel(
+    NavigateToCarouselEvent event,
     Emitter<WelcomeState> emit,
   ) async {
-    _appRouter.push(const HomeRoute());
+    _appRouter.push(const CarouselRoute());
   }
 }

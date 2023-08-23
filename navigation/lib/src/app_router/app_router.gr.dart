@@ -23,6 +23,12 @@ class _$AppRouter extends RootStackRouter {
         child: const WelcomeScreen(),
       );
     },
+    CarouselRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const CarouselScreen(),
+      );
+    },
     NavigationBarRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -60,6 +66,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           WelcomeRoute.name,
           path: '/',
+        ),
+        RouteConfig(
+          CarouselRoute.name,
+          path: 'carousel',
         ),
         RouteConfig(
           NavigationBarRoute.name,
@@ -107,6 +117,18 @@ class WelcomeRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'WelcomeRoute';
+}
+
+/// generated route for
+/// [CarouselScreen]
+class CarouselRoute extends PageRouteInfo<void> {
+  const CarouselRoute()
+      : super(
+          CarouselRoute.name,
+          path: 'carousel',
+        );
+
+  static const String name = 'CarouselRoute';
 }
 
 /// generated route for

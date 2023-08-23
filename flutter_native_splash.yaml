@@ -1,0 +1,14 @@
+flutter_native_splash:
+  # For run:
+  # dart run flutter_native_splash:create
+  # To restore Flutter's default white splash screen:
+  # dart run flutter_native_splash:remove
+
+  color: "#000000"
+  image: ./core_ui/assets/images/splash_image.png
+  branding: ./core_ui/assets/images/rights.png
+
+  android_12:
+    image: ./core_ui/assets/images/splash_image.png
+    color: "#000000"
+    branding: ./core_ui/assets/images/rights.png

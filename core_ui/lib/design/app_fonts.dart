@@ -5,6 +5,10 @@ class AppFonts {
     fontSize: 25,
     fontWeight: FontWeight.w800,
   );
+  static const bold_24 = TextStyle(
+    fontSize: 24,
+    fontWeight: FontWeight.w800,
+  );
 
   static const normal_11 = TextStyle(
     fontSize: 11,
@@ -13,6 +17,11 @@ class AppFonts {
 
   static const normal_12 = TextStyle(
     fontSize: 12,
+    fontWeight: FontWeight.w500,
+  );
+
+  static const normal_16 = TextStyle(
+    fontSize: 16,
     fontWeight: FontWeight.w500,
   );
 }

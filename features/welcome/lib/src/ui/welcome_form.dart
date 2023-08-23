@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:core_ui/core_ui.dart';
 import 'package:core/core.dart';
-import 'package:flutter/material.dart';
+
 import 'package:welcome/src/bloc/welcome_bloc.dart';
 
 class WelcomeForm extends StatelessWidget {
@@ -71,8 +73,15 @@ class WelcomeForm extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        const AppButton(
-                          buttonText: AppConstants.getStarted,
+                        GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<WelcomeBloc>(context).add(
+                              NavigateToCarouselEvent(),
+                            );
+                          },
+                          child: const AppButton(
+                            buttonText: AppConstants.getStarted,
+                          ),
                         ),
                         Text(
                           AppConstants.rights.toUpperCase(),
