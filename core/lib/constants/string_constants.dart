@@ -1,5 +1,6 @@
 class AppConstants {
   static const String getStarted = 'Get Started';
+  static const String login = 'login';
 
   static const String homeTitle = 'Home';
   static const String influencerTitle = 'Influencer';
@@ -9,7 +10,7 @@ class AppConstants {
   static const String welcome = 'Welcome to';
   static const String rights = '© All rights reserved';
 
-  static const String carouselTitle =
+  static const String title =
       'Create the perfect shoutout to your friends from their favorite influencers';
   static const String carouselTextFirst =
       'Is it your friends birthday and you want to get her something unforgettable. Why not buy her a birthday greeting from her favorite influencer?';

@@ -11,6 +11,14 @@ class AppTheme {
           color: AppColors.black,
         ),
       ),
+      inputDecorationTheme: const InputDecorationTheme(
+        enabledBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.black),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(color: AppColors.pink),
+        ),
+      ),
     );
   }
 }

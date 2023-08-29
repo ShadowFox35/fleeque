@@ -29,6 +29,12 @@ class _$AppRouter extends RootStackRouter {
         child: const CarouselScreen(),
       );
     },
+    AuthorizationRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const AuthorizationScreen(),
+      );
+    },
     NavigationBarRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -70,6 +76,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           CarouselRoute.name,
           path: 'carousel',
+        ),
+        RouteConfig(
+          AuthorizationRoute.name,
+          path: 'authorization',
         ),
         RouteConfig(
           NavigationBarRoute.name,
@@ -129,6 +139,18 @@ class CarouselRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'CarouselRoute';
+}
+
+/// generated route for
+/// [AuthorizationScreen]
+class AuthorizationRoute extends PageRouteInfo<void> {
+  const AuthorizationRoute()
+      : super(
+          AuthorizationRoute.name,
+          path: 'authorization',
+        );
+
+  static const String name = 'AuthorizationRoute';
 }
 
 /// generated route for

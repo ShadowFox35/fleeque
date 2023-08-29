@@ -1,3 +1,4 @@
+import 'package:authorization/authorization.dart';
 import 'package:auto_route/auto_route.dart';
 
 import 'package:welcome/welcome.dart';
@@ -23,6 +24,10 @@ part 'app_router.gr.dart';
     AutoRoute(
       page: CarouselScreen,
       path: 'carousel',
+    ),
+    AutoRoute(
+      page: AuthorizationScreen,
+      path: 'authorization',
     ),
     AutoRoute(
       page: NavigationBarScreen,

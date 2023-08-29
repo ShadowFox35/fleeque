@@ -53,13 +53,13 @@ class WelcomeForm extends StatelessWidget {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(
-                              bottom: AppDimens.padding_15),
+                            bottom: AppDimens.padding_15,
+                          ),
                           child: Text(
                             AppConstants.welcome,
-                            style: GoogleFonts.montserrat(
-                                    textStyle: AppFonts.bold_25)
-                                .copyWith(
-                                    color: Theme.of(context).primaryColor),
+                            style: AppFonts.welcome.copyWith(
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -79,14 +79,14 @@ class WelcomeForm extends StatelessWidget {
                               NavigateToCarouselEvent(),
                             );
                           },
-                          child: const AppButton(
+                          child: AppButton(
                             buttonText: AppConstants.getStarted,
+                            buttonColor: Theme.of(context).primaryColor,
                           ),
                         ),
                         Text(
                           AppConstants.rights.toUpperCase(),
-                          style: GoogleFonts.roboto(
-                                  textStyle: AppFonts.normal_11)
+                          style: AppFonts.rights
                               .copyWith(color: Theme.of(context).primaryColor),
                         ),
                       ],

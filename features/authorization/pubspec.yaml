@@ -1,4 +1,4 @@
-name: carousel
+name: authorization
 description: A new Flutter package project.
 publish_to: "none"
 version: 0.0.1
@@ -10,7 +10,6 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
-  carousel_slider: ^4.2.1
 
   navigation:
     path: ../../navigation

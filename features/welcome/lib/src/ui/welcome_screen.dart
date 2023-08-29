@@ -14,7 +14,7 @@ class WelcomeScreen extends StatelessWidget {
       child: BlocBuilder<WelcomeBloc, WelcomeState>(
           builder: (BuildContext context, WelcomeState state) {
         return const WelcomeForm();
-      }),
+      },),
     );
   }
 }
