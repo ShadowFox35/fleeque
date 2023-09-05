@@ -68,4 +68,9 @@ class AppFonts {
     fontSize: 10,
     fontWeight: FontWeight.w500,
   );
+  static TextStyle appBarText = GoogleFonts.roboto(
+    color: AppColors.white,
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+  );
 }

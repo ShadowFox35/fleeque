@@ -26,8 +26,16 @@ part 'app_router.gr.dart';
       path: 'carousel',
     ),
     AutoRoute(
+      page: SignInScreen,
+      path: 'sign_in',
+    ),
+    AutoRoute(
+      page: SignUpScreen,
+      path: 'sign_up',
+    ),
+    AutoRoute(
       page: AuthorizationScreen,
-      path: 'authorization',
+      path: 'sign_up',
     ),
     AutoRoute(
       page: NavigationBarScreen,

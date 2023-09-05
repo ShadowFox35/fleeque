@@ -1,9 +1,13 @@
-import 'package:core/constants/string_constants.dart';
 import 'package:flutter/material.dart';
 import 'package:core_ui/core_ui.dart';
 
 class LoginButton extends StatelessWidget {
-  const LoginButton({super.key});
+  final String buttonText;
+
+  const LoginButton({
+    super.key,
+    required this.buttonText,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +33,7 @@ class LoginButton extends StatelessWidget {
       ),
       child: Center(
         child: Text(
-          AppConstants.login.toUpperCase(),
+          buttonText.toUpperCase(),
           style: AppFonts.loginButton,
         ),
       ),

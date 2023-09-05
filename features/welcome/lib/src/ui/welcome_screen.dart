@@ -1,4 +1,5 @@
 import 'package:core/core.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:welcome/src/bloc/welcome_bloc.dart';
 
@@ -10,11 +11,16 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => WelcomeBloc(),
+      create: (BuildContext context) => WelcomeBloc(
+        checkUserUseCase: appLocator<CheckUserUseCase>(),
+        appRouter: appLocator<AppRouter>(),
+        authService: appLocator<AuthService>(),
+      ),
       child: BlocBuilder<WelcomeBloc, WelcomeState>(
-          builder: (BuildContext context, WelcomeState state) {
-        return const WelcomeForm();
-      },),
+        builder: (BuildContext context, WelcomeState state) {
+          return const WelcomeForm();
+        },
+      ),
     );
   }
 }

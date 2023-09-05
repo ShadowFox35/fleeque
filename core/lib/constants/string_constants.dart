@@ -1,6 +1,7 @@
 class AppConstants {
   static const String getStarted = 'Get Started';
   static const String login = 'login';
+  static const String signUp = 'sign up';
 
   static const String homeTitle = 'Home';
   static const String influencerTitle = 'Influencer';

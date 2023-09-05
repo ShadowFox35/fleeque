@@ -29,10 +29,26 @@ class _$AppRouter extends RootStackRouter {
         child: const CarouselScreen(),
       );
     },
-    AuthorizationRoute.name: (routeData) {
+    SignInRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const AuthorizationScreen(),
+        child: const SignInScreen(),
+      );
+    },
+    SignUpRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const SignUpScreen(),
+      );
+    },
+    AuthorizationRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthorizationRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: AuthorizationScreen(
+          key: args.key,
+          messageText: args.messageText,
+        ),
       );
     },
     NavigationBarRoute.name: (routeData) {
@@ -78,8 +94,16 @@ class _$AppRouter extends RootStackRouter {
           path: 'carousel',
         ),
         RouteConfig(
+          SignInRoute.name,
+          path: 'sign_in',
+        ),
+        RouteConfig(
+          SignUpRoute.name,
+          path: 'sign_up',
+        ),
+        RouteConfig(
           AuthorizationRoute.name,
-          path: 'authorization',
+          path: 'sign_up',
         ),
         RouteConfig(
           NavigationBarRoute.name,
@@ -142,15 +166,61 @@ class CarouselRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [AuthorizationScreen]
-class AuthorizationRoute extends PageRouteInfo<void> {
-  const AuthorizationRoute()
+/// [SignInScreen]
+class SignInRoute extends PageRouteInfo<void> {
+  const SignInRoute()
       : super(
+          SignInRoute.name,
+          path: 'sign_in',
+        );
+
+  static const String name = 'SignInRoute';
+}
+
+/// generated route for
+/// [SignUpScreen]
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute()
+      : super(
+          SignUpRoute.name,
+          path: 'sign_up',
+        );
+
+  static const String name = 'SignUpRoute';
+}
+
+/// generated route for
+/// [AuthorizationScreen]
+class AuthorizationRoute extends PageRouteInfo<AuthorizationRouteArgs> {
+  AuthorizationRoute({
+    Key? key,
+    required String messageText,
+  }) : super(
           AuthorizationRoute.name,
-          path: 'authorization',
+          path: 'sign_up',
+          args: AuthorizationRouteArgs(
+            key: key,
+            messageText: messageText,
+          ),
         );
 
   static const String name = 'AuthorizationRoute';
+}
+
+class AuthorizationRouteArgs {
+  const AuthorizationRouteArgs({
+    this.key,
+    required this.messageText,
+  });
+
+  final Key? key;
+
+  final String messageText;
+
+  @override
+  String toString() {
+    return 'AuthorizationRouteArgs{key: $key, messageText: $messageText}';
+  }
 }
 
 /// generated route for
