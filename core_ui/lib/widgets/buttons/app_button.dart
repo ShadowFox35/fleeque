@@ -2,9 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:core_ui/core_ui.dart';
 
 class AppButton extends StatelessWidget {
-  final String buttonText; // Параметр для хранения текста кнопки
+  final String buttonText;
+  final Color buttonColor;
 
-  const AppButton({Key? key, required this.buttonText}) : super(key: key);
+  const AppButton(
+      {Key? key, required this.buttonText, required this.buttonColor})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +16,13 @@ class AppButton extends StatelessWidget {
       width: AppDimens.size_250,
       height: AppDimens.size_60,
       decoration: BoxDecoration(
-        color: Theme.of(context).primaryColor,
+        color: buttonColor,
         borderRadius: BorderRadius.circular(AppDimens.radius_100),
       ),
       child: Center(
         child: Text(
           buttonText.toUpperCase(),
-          style: GoogleFonts.roboto(textStyle: AppFonts.normal_12),
+          style: AppFonts.button,
         ),
       ),
     );

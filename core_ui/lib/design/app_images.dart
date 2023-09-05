@@ -8,4 +8,5 @@ class ImagePaths {
   static const String logoIcon = '${_baseIcons}logo_icon.svg';
   static const String accountIcon = '${_baseIcons}account_icon.svg';
   static const String informationIcon = '${_baseIcons}information_icon.svg';
+  static const String googleIcon = '${_baseIcons}google.svg';
 }

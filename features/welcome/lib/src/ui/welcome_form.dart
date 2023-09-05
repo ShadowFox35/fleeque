@@ -1,6 +1,8 @@
+import 'package:flutter/material.dart';
+
 import 'package:core_ui/core_ui.dart';
 import 'package:core/core.dart';
-import 'package:flutter/material.dart';
+
 import 'package:welcome/src/bloc/welcome_bloc.dart';
 
 class WelcomeForm extends StatelessWidget {
@@ -51,13 +53,13 @@ class WelcomeForm extends StatelessWidget {
                       children: [
                         Container(
                           margin: const EdgeInsets.only(
-                              bottom: AppDimens.padding_15),
+                            bottom: AppDimens.padding_15,
+                          ),
                           child: Text(
                             AppConstants.welcome,
-                            style: GoogleFonts.montserrat(
-                                    textStyle: AppFonts.bold_25)
-                                .copyWith(
-                                    color: Theme.of(context).primaryColor),
+                            style: AppFonts.welcome.copyWith(
+                              color: Theme.of(context).primaryColor,
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -71,13 +73,20 @@ class WelcomeForm extends StatelessWidget {
                     ),
                     Column(
                       children: [
-                        const AppButton(
-                          buttonText: AppConstants.getStarted,
+                        GestureDetector(
+                          onTap: () {
+                            BlocProvider.of<WelcomeBloc>(context).add(
+                              NavigateToCarouselEvent(),
+                            );
+                          },
+                          child: AppButton(
+                            buttonText: AppConstants.getStarted,
+                            buttonColor: Theme.of(context).primaryColor,
+                          ),
                         ),
                         Text(
                           AppConstants.rights.toUpperCase(),
-                          style: GoogleFonts.roboto(
-                                  textStyle: AppFonts.normal_11)
+                          style: AppFonts.rights
                               .copyWith(color: Theme.of(context).primaryColor),
                         ),
                       ],

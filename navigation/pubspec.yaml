@@ -13,6 +13,10 @@ dependencies:
 
   welcome:
     path: ../features/welcome
+  carousel:
+    path: ../features/carousel
+  authorization:
+    path: ../features/authorization
   navigation_bar:
     path: ../features/navigation_bar
   influencer:
