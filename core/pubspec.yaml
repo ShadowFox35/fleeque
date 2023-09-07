@@ -17,6 +17,8 @@ dependencies:
   get_it: ^7.6.0
   google_sign_in: ^6.1.4
 
+  carousel_slider: ^4.2.1
+
   data:
     path: ../data
   domain:

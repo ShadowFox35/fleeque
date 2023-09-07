@@ -4,15 +4,22 @@ import 'package:core_ui/core_ui.dart';
 class AppButton extends StatelessWidget {
   final String buttonText;
   final Color buttonColor;
+  final TextStyle buttonTextColor;
 
   const AppButton(
-      {Key? key, required this.buttonText, required this.buttonColor})
+      {Key? key,
+      required this.buttonText,
+      required this.buttonColor,
+      required this.buttonTextColor})
       : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    double screenHeight = MediaQuery.of(context).size.height;
+    double marginValue = screenHeight * 0.01;
+
     return Container(
-      margin: const EdgeInsets.only(bottom: AppDimens.padding_40),
+      margin: EdgeInsets.symmetric(vertical: marginValue),
       width: AppDimens.size_250,
       height: AppDimens.size_60,
       decoration: BoxDecoration(
@@ -22,7 +29,7 @@ class AppButton extends StatelessWidget {
       child: Center(
         child: Text(
           buttonText.toUpperCase(),
-          style: AppFonts.button,
+          style: buttonTextColor,
         ),
       ),
     );

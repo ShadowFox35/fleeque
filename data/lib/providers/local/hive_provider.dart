@@ -1,3 +1,4 @@
+import 'package:data/models/influencer_model.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 
 class HiveProvider {
@@ -5,6 +6,7 @@ class HiveProvider {
 
   Future<void> initHive() async {
     await Hive.initFlutter();
+    Hive.registerAdapter(InfluencerModelAdapter());
     _userIdBox = await Hive.openBox(_HiveKeys.users);
   }
 

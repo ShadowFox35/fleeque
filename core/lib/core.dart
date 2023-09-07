@@ -7,6 +7,7 @@ export 'package:cloud_firestore/cloud_firestore.dart';
 export 'package:core/config/firebase_options.dart';
 export 'package:firebase_auth/firebase_auth.dart';
 export 'package:google_sign_in/google_sign_in.dart';
+export 'package:carousel_slider/carousel_slider.dart';
 
 export 'package:core/services/auth_service.dart';
 

@@ -1,7 +1,8 @@
 import 'package:core/core.dart';
 import 'package:data/data.dart';
-import 'package:data/repositories/authorization_repository_impl.dart';
 import 'package:domain/domain.dart';
+import 'package:data/repositories/authorization_repository_impl.dart';
+import 'package:data/repositories/influencer_repository_impl.dart';
 
 final DataDI dataDI = DataDI();
 
@@ -14,18 +15,9 @@ class DataDI {
   }
 
   void _initServices() {
-    // appLocator.registerLazySingleton<UrlService>(
-    //   () => UrlService(),
-    // );
     appLocator.registerLazySingleton<AuthService>(
       () => AuthService(),
     );
-    // appLocator.registerLazySingleton<NetworkService>(
-    //   () => NetworkService(
-    //     connectivity: Connectivity(),
-    //     internetConnectionChecker: InternetConnectionChecker(),
-    //   ),
-    // );
   }
 
   void _initProviders() {
@@ -39,6 +31,10 @@ class DataDI {
         googleSignIn: GoogleSignIn(),
       ),
     );
+
+    appLocator.registerLazySingleton<FirebaseProvider>(
+      () => FirebaseProvider(),
+    );
   }
 
   void _initRepositories() {
@@ -48,6 +44,9 @@ class DataDI {
         hiveProvider: appLocator<HiveProvider>(),
       ),
     );
+
+    appLocator.registerLazySingleton<InfluencerRepository>(
+        () => InfluencerRepositoryImpl(appLocator.get<FirebaseProvider>()));
   }
 
   void _initUseCases() {
@@ -85,6 +84,10 @@ class DataDI {
       () => CheckUserUseCase(
         authorizationRepository: appLocator<AuthorizationRepository>(),
       ),
+    );
+
+    appLocator.registerLazySingleton<GetInfluencersUseCase>(
+      () => GetInfluencersUseCase(appLocator.get<InfluencerRepository>()),
     );
   }
 }
