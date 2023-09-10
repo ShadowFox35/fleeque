@@ -6,16 +6,11 @@ import 'package:home/src/bloc/home_bloc.dart';
 import 'package:home/src/ui/home_carousel.dart';
 import 'package:home/src/ui/home_list.dart';
 
-class HomeForm extends StatefulWidget {
+class HomeForm extends StatelessWidget {
   final List<InfluencerEntity> influencerList;
 
   const HomeForm(this.influencerList, {super.key});
 
-  @override
-  State<HomeForm> createState() => _HomeFormState();
-}
-
-class _HomeFormState extends State<HomeForm> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(

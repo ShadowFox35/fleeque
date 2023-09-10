@@ -76,7 +76,7 @@ class WelcomeForm extends StatelessWidget {
                         GestureDetector(
                           onTap: () {
                             BlocProvider.of<WelcomeBloc>(context).add(
-                              GetStartedEvent(),
+                              NavigateToCarouselEvent(),
                             );
                           },
                           child: AppButton(

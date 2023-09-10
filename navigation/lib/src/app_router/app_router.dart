@@ -8,6 +8,7 @@ import 'package:influencer/influencer.dart';
 import 'package:home/home.dart';
 import 'package:contact/contact.dart';
 import 'package:about/about.dart';
+import 'package:splash/splash.dart';
 
 import 'package:flutter/material.dart';
 
@@ -17,8 +18,13 @@ part 'app_router.gr.dart';
   replaceInRouteName: 'Screen,Route',
   routes: <AutoRoute>[
     AutoRoute(
-      page: WelcomeScreen,
+      page: SplashScreen,
       path: '/',
+      initial: true,
+    ),
+    AutoRoute(
+      page: WelcomeScreen,
+      path: 'welcome',
       initial: true,
     ),
     AutoRoute(

@@ -17,25 +17,24 @@ class HomeScreen extends StatelessWidget {
       child: BlocBuilder<HomeBloc, HomeState>(
           builder: (BuildContext context, HomeState state) {
         if (state.error != null) {}
-
-        if (!state.isLoading) {
+        if (state.isLoading) {
           return Center(
-            child: Scaffold(
-              appBar: AppBar(
-                backgroundColor: AppColors.black,
-                centerTitle: true,
-                actions: const <Widget>[
-                  HomeAppBar(),
-                ],
-              ),
-              body: HomeForm(state.influencerList),
+            child: CircularProgressIndicator(
+              valueColor:
+                  AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
             ),
           );
         }
         return Center(
-          child: CircularProgressIndicator(
-            valueColor:
-                AlwaysStoppedAnimation<Color>(Theme.of(context).primaryColor),
+          child: Scaffold(
+            appBar: AppBar(
+              backgroundColor: AppColors.black,
+              centerTitle: true,
+              actions: const <Widget>[
+                HomeAppBar(),
+              ],
+            ),
+            body: HomeForm(state.influencerList),
           ),
         );
       }),

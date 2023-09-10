@@ -22,8 +22,8 @@ dependencies:
     path: ./domain
   navigation:
     path: ./navigation
-  welcome:
-    path: ./features/welcome
+  splash:
+    path: ./features/splash
 
 dev_dependencies:
   flutter_test:

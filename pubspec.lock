@@ -889,6 +889,13 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.9.1"
+  splash:
+    dependency: "direct main"
+    description:
+      path: "features/splash"
+      relative: true
+    source: path
+    version: "0.0.1"
   stack_trace:
     dependency: transitive
     description:
@@ -1010,7 +1017,7 @@ packages:
     source: hosted
     version: "2.4.0"
   welcome:
-    dependency: "direct main"
+    dependency: transitive
     description:
       path: "features/welcome"
       relative: true

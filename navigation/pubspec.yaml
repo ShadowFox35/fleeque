@@ -11,6 +11,8 @@ dependencies:
 
   auto_route: ^5.0.4
 
+  splash:
+    path: ../features/splash
   welcome:
     path: ../features/welcome
   carousel:

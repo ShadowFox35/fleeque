@@ -8,6 +8,4 @@ class InitialEvent extends WelcomeEvent {
 
 class GetStartedEvent extends WelcomeEvent {}
 
-class NavigateToHomeEvent extends WelcomeEvent {}
-
-class NavigateToSignInEvent extends WelcomeEvent {}
+class NavigateToCarouselEvent extends WelcomeEvent {}

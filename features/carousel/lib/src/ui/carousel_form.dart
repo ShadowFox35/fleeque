@@ -68,7 +68,7 @@ class _CarouselFormState extends State<CarouselForm> {
                         GestureDetector(
                           onTap: () {
                             BlocProvider.of<CarouselBloc>(context).add(
-                              NavigateToHome(),
+                              NavigateToSignInEvent(),
                             );
                           },
                           child: Text(
