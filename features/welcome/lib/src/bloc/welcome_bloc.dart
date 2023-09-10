@@ -4,16 +4,20 @@ part 'welcome_event.dart';
 part 'welcome_state.dart';
 
 class WelcomeBloc extends Bloc<WelcomeEvent, WelcomeState> {
-  final _appRouter = appLocator<AppRouter>();
+  final AppRouter _appRouter;
 
-  WelcomeBloc() : super(WelcomeState()) {
-    on<NavigateToCarouselEvent>(_goCarousel);
+  WelcomeBloc({
+    required AuthService authService,
+    required AppRouter appRouter,
+  })  : _appRouter = appRouter,
+        super(WelcomeState()) {
+    on<NavigateToCarouselEvent>(_goCarouselScreen);
   }
 
-  Future<void> _goCarousel(
+  Future<void> _goCarouselScreen(
     NavigateToCarouselEvent event,
     Emitter<WelcomeState> emit,
   ) async {
-    _appRouter.push(const CarouselRoute());
+    _appRouter.replace(const CarouselRoute());
   }
 }

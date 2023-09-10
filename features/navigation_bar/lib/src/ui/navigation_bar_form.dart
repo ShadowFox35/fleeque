@@ -21,29 +21,27 @@ class NavigationBarForm extends StatelessWidget {
           currentIndex: router.activeIndex,
           onTap: router.setActiveIndex,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: AppColors.grey,
-          selectedItemColor: AppColors.black,
-          unselectedItemColor: AppColors.darkGrey,
-          items: const <BottomNavigationBarItem>[
+          backgroundColor: AppColors.black,
+          selectedItemColor: AppColors.white,
+          unselectedItemColor: AppColors.white,
+          items: <BottomNavigationBarItem>[
             BottomNavigationBarItem(
-              activeIcon:
-                  Icon(Icons.bakery_dining_outlined, color: AppColors.black),
-              icon: Icon(Icons.bakery_dining_outlined, color: Colors.grey),
-              label: AppConstants.homeTitle,
-            ),
+                activeIcon: SvgPicture.asset(ImagePaths.homeActiveIcon),
+                icon: SvgPicture.asset(ImagePaths.homeInactiveIcon),
+                label: AppConstants.homeTitle),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.favorite_border, color: AppColors.black),
-              icon: Icon(Icons.favorite_border, color: Colors.grey),
+              activeIcon: SvgPicture.asset(ImagePaths.influencerActiveIcon),
+              icon: SvgPicture.asset(ImagePaths.influencerInactiveIcon),
               label: AppConstants.influencerTitle,
             ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.history_edu, color: AppColors.black),
-              icon: Icon(Icons.history_edu, color: Colors.grey),
+              activeIcon: SvgPicture.asset(ImagePaths.aboutActiveIcon),
+              icon: SvgPicture.asset(ImagePaths.aboutInactiveIcon),
               label: AppConstants.aboutTitle,
             ),
             BottomNavigationBarItem(
-              activeIcon: Icon(Icons.settings, color: AppColors.black),
-              icon: Icon(Icons.settings, color: Colors.grey),
+              activeIcon: SvgPicture.asset(ImagePaths.contactInactiveIcon),
+              icon: SvgPicture.asset(ImagePaths.contactInactiveIcon),
               label: AppConstants.contactTitle,
             ),
           ],

@@ -17,6 +17,12 @@ class _$AppRouter extends RootStackRouter {
 
   @override
   final Map<String, PageFactory> pagesMap = {
+    SplashRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const SplashScreen(),
+      );
+    },
     WelcomeRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -29,10 +35,26 @@ class _$AppRouter extends RootStackRouter {
         child: const CarouselScreen(),
       );
     },
-    AuthorizationRoute.name: (routeData) {
+    SignInRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
-        child: const AuthorizationScreen(),
+        child: const SignInScreen(),
+      );
+    },
+    SignUpRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const SignUpScreen(),
+      );
+    },
+    AuthorizationRoute.name: (routeData) {
+      final args = routeData.argsAs<AuthorizationRouteArgs>();
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: AuthorizationScreen(
+          key: args.key,
+          messageText: args.messageText,
+        ),
       );
     },
     NavigationBarRoute.name: (routeData) {
@@ -70,16 +92,28 @@ class _$AppRouter extends RootStackRouter {
   @override
   List<RouteConfig> get routes => [
         RouteConfig(
-          WelcomeRoute.name,
+          SplashRoute.name,
           path: '/',
+        ),
+        RouteConfig(
+          WelcomeRoute.name,
+          path: 'welcome',
         ),
         RouteConfig(
           CarouselRoute.name,
           path: 'carousel',
         ),
         RouteConfig(
+          SignInRoute.name,
+          path: 'sign_in',
+        ),
+        RouteConfig(
+          SignUpRoute.name,
+          path: 'sign_up',
+        ),
+        RouteConfig(
           AuthorizationRoute.name,
-          path: 'authorization',
+          path: 'sign_up',
         ),
         RouteConfig(
           NavigationBarRoute.name,
@@ -118,12 +152,24 @@ class _$AppRouter extends RootStackRouter {
 }
 
 /// generated route for
+/// [SplashScreen]
+class SplashRoute extends PageRouteInfo<void> {
+  const SplashRoute()
+      : super(
+          SplashRoute.name,
+          path: '/',
+        );
+
+  static const String name = 'SplashRoute';
+}
+
+/// generated route for
 /// [WelcomeScreen]
 class WelcomeRoute extends PageRouteInfo<void> {
   const WelcomeRoute()
       : super(
           WelcomeRoute.name,
-          path: '/',
+          path: 'welcome',
         );
 
   static const String name = 'WelcomeRoute';
@@ -142,15 +188,61 @@ class CarouselRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [AuthorizationScreen]
-class AuthorizationRoute extends PageRouteInfo<void> {
-  const AuthorizationRoute()
+/// [SignInScreen]
+class SignInRoute extends PageRouteInfo<void> {
+  const SignInRoute()
       : super(
+          SignInRoute.name,
+          path: 'sign_in',
+        );
+
+  static const String name = 'SignInRoute';
+}
+
+/// generated route for
+/// [SignUpScreen]
+class SignUpRoute extends PageRouteInfo<void> {
+  const SignUpRoute()
+      : super(
+          SignUpRoute.name,
+          path: 'sign_up',
+        );
+
+  static const String name = 'SignUpRoute';
+}
+
+/// generated route for
+/// [AuthorizationScreen]
+class AuthorizationRoute extends PageRouteInfo<AuthorizationRouteArgs> {
+  AuthorizationRoute({
+    Key? key,
+    required String messageText,
+  }) : super(
           AuthorizationRoute.name,
-          path: 'authorization',
+          path: 'sign_up',
+          args: AuthorizationRouteArgs(
+            key: key,
+            messageText: messageText,
+          ),
         );
 
   static const String name = 'AuthorizationRoute';
+}
+
+class AuthorizationRouteArgs {
+  const AuthorizationRouteArgs({
+    this.key,
+    required this.messageText,
+  });
+
+  final Key? key;
+
+  final String messageText;
+
+  @override
+  String toString() {
+    return 'AuthorizationRouteArgs{key: $key, messageText: $messageText}';
+  }
 }
 
 /// generated route for

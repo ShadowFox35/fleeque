@@ -7,13 +7,13 @@ class CarouselBloc extends Bloc<CarouselEvent, CarouselState> {
   final _appRouter = appLocator<AppRouter>();
 
   CarouselBloc() : super(CarouselState()) {
-    on<NavigateToAuthEvent>(_goAuth);
+    on<NavigateToSignInEvent>(_goHome);
   }
 
-  Future<void> _goAuth(
-    NavigateToAuthEvent event,
+  Future<void> _goHome(
+    NavigateToSignInEvent event,
     Emitter<CarouselState> emit,
   ) async {
-    _appRouter.push(const AuthorizationRoute());
+    _appRouter.push(const SignInRoute());
   }
 }

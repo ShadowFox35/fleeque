@@ -5,19 +5,19 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "food_app",
+      "name": "fleeque",
       "request": "launch",
       "type": "dart",
       "program": "lib/main.dart"
     },
     {
-      "name": "food_app (profile mode)",
+      "name": "fleeque (profile mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "profile"
     },
     {
-      "name": "food_app (release mode)",
+      "name": "fleeque (release mode)",
       "request": "launch",
       "type": "dart",
       "flutterMode": "release"

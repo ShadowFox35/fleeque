@@ -10,11 +10,15 @@ class WelcomeScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context) => WelcomeBloc(),
+      create: (BuildContext context) => WelcomeBloc(
+        appRouter: appLocator<AppRouter>(),
+        authService: appLocator<AuthService>(),
+      ),
       child: BlocBuilder<WelcomeBloc, WelcomeState>(
-          builder: (BuildContext context, WelcomeState state) {
-        return const WelcomeForm();
-      },),
+        builder: (BuildContext context, WelcomeState state) {
+          return const WelcomeForm();
+        },
+      ),
     );
   }
 }

@@ -1,7 +1,5 @@
 import 'package:carousel/src/bloc/carousel_bloc.dart';
 import 'package:flutter/material.dart';
-
-import 'package:carousel_slider/carousel_slider.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:core/core.dart';
 
@@ -37,6 +35,7 @@ class _CarouselFormState extends State<CarouselForm> {
             alignment: Alignment.center,
             child: CarouselSlider(
               options: CarouselOptions(
+                enlargeCenterPage: true,
                 enableInfiniteScroll: false,
                 height: 500.0,
               ),
@@ -46,7 +45,6 @@ class _CarouselFormState extends State<CarouselForm> {
                     return Column(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        // Slide(description: elem.description),
                         Text(
                           AppConstants.title,
                           textAlign: TextAlign.center,
@@ -57,7 +55,6 @@ class _CarouselFormState extends State<CarouselForm> {
                           textAlign: TextAlign.center,
                           style: AppFonts.regularText,
                         ),
-
                         Row(
                           mainAxisSize: MainAxisSize.min,
                           mainAxisAlignment: MainAxisAlignment.center,
@@ -71,7 +68,7 @@ class _CarouselFormState extends State<CarouselForm> {
                         GestureDetector(
                           onTap: () {
                             BlocProvider.of<CarouselBloc>(context).add(
-                              NavigateToAuthEvent(),
+                              NavigateToSignInEvent(),
                             );
                           },
                           child: Text(

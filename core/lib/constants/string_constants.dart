@@ -1,8 +1,14 @@
 class AppConstants {
   static const String getStarted = 'Get Started';
   static const String login = 'login';
+  static const String signUp = 'sign up';
 
   static const String homeTitle = 'Home';
+  static const String percent = '50%';
+  static const String popular = 'Popular';
+  static const String swipeToExplore = 'Swipe to explore Influencers';
+  static const String homeButtonText = 'See more';
+
   static const String influencerTitle = 'Influencer';
   static const String aboutTitle = 'About';
   static const String contactTitle = 'Contact';
