@@ -1,17 +1,17 @@
 import 'package:core_ui/core_ui.dart';
+import 'package:core_ui/widgets/list/app_list_item.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
-import 'package:home/src/ui/home_list_item.dart';
 
-class HomeList extends StatefulWidget {
+class AppList extends StatefulWidget {
   final List<InfluencerEntity> influencerList;
-  const HomeList(this.influencerList, {super.key});
+  const AppList(this.influencerList, {super.key});
 
   @override
-  State<StatefulWidget> createState() => _HomeListState();
+  State<StatefulWidget> createState() => _AppListState();
 }
 
-class _HomeListState extends State<HomeList> {
+class _AppListState extends State<AppList> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
@@ -22,7 +22,7 @@ class _HomeListState extends State<HomeList> {
         final InfluencerEntity influencer = widget.influencerList[index];
         return Padding(
           padding: const EdgeInsets.symmetric(vertical: AppDimens.padding_10),
-          child: HomeListItem(
+          child: AppListItem(
             influencer: influencer,
           ),
         );

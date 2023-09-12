@@ -13,6 +13,7 @@ class HomeScreen extends StatelessWidget {
     return BlocProvider(
       create: (BuildContext context) => HomeBloc(
         getInfluencersUseCase: appLocator.get<GetInfluencersUseCase>(),
+        saveInfluencersUseCase: appLocator<SaveInfluencersUseCase>(),
       ),
       child: BlocBuilder<HomeBloc, HomeState>(
           builder: (BuildContext context, HomeState state) {

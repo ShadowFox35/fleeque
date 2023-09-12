@@ -11,6 +11,9 @@ export './design/app_themes.dart';
 
 export './widgets/buttons/app_button.dart';
 export './widgets/buttons/login_button.dart';
+export './widgets/carousel/carousel.dart';
+export './widgets/list/app_list.dart';
+
 export './widgets/circle_bar.dart';
 export './widgets/app_bar.dart';
 export './widgets/input_field.dart';

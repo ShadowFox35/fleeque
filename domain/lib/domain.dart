@@ -8,6 +8,7 @@ export 'package:domain/usecases/authorization/check_user_usecase.dart';
 export 'package:domain/usecases/authorization/save_user_usecase.dart';
 export 'package:domain/usecases/authorization/sign_out_usecase.dart';
 export 'package:domain/usecases/influencers/get_influencers_usecase.dart';
+export 'package:domain/usecases/influencers/save_influencers_usecase.dart';
 
 export 'package:domain/entities/authorization_entity.dart';
 export 'package:domain/entities/influencer_entity.dart';

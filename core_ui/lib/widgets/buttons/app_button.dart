@@ -3,12 +3,14 @@ import 'package:core_ui/core_ui.dart';
 
 class AppButton extends StatelessWidget {
   final String buttonText;
+  final double buttonWidth;
   final Color buttonColor;
   final TextStyle buttonTextColor;
 
   const AppButton(
       {Key? key,
       required this.buttonText,
+      required this.buttonWidth,
       required this.buttonColor,
       required this.buttonTextColor})
       : super(key: key);
@@ -20,7 +22,7 @@ class AppButton extends StatelessWidget {
 
     return Container(
       margin: EdgeInsets.symmetric(vertical: marginValue),
-      width: AppDimens.size_250,
+      width: buttonWidth,
       height: AppDimens.size_60,
       decoration: BoxDecoration(
         color: buttonColor,

@@ -10,6 +10,10 @@ class AppConstants {
   static const String homeButtonText = 'See more';
 
   static const String influencerTitle = 'Influencer';
+  static const String filter = 'filter';
+  static const String influencerButtonText =
+      'if you dont find influencer just \n let us know and we will make sure they join Fleeque soon';
+
   static const String aboutTitle = 'About';
   static const String contactTitle = 'Contact';
 

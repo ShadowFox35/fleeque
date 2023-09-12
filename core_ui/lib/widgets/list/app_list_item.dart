@@ -2,19 +2,19 @@ import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 
-class HomeListItem extends StatefulWidget {
+class AppListItem extends StatefulWidget {
   final InfluencerEntity influencer;
 
-  const HomeListItem({
+  const AppListItem({
     super.key,
     required this.influencer,
   });
 
   @override
-  State<HomeListItem> createState() => _HomeListItemState();
+  State<AppListItem> createState() => _AppListItemState();
 }
 
-class _HomeListItemState extends State<HomeListItem> {
+class _AppListItemState extends State<AppListItem> {
   @override
   Widget build(BuildContext context) {
     final influencer = widget.influencer;
@@ -28,7 +28,11 @@ class _HomeListItemState extends State<HomeListItem> {
           height: AppDimens.size_70,
           child: ClipRRect(
             borderRadius: BorderRadius.circular(AppDimens.radius_10),
-            child: Image.network(influencer.image, fit: BoxFit.cover),
+            child: Image.network(
+              influencer.image,
+              fit: BoxFit.cover,
+              alignment: Alignment.topCenter,
+            ),
           ),
         ),
         Expanded(

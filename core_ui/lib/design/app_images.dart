@@ -21,13 +21,12 @@ class ImagePaths {
       '${_baseIcons}influencer_active_icon.svg';
   static const String influencerInactiveIcon =
       '${_baseIcons}influencer_inactive_icon.svg';
+  static const String filterIcon = '${_baseIcons}filter_icon.svg';
 
   static const String aboutActiveIcon = '${_baseIcons}about_active_icon.svg';
   static const String aboutInactiveIcon =
       '${_baseIcons}about_inactive_icon.svg';
 
-  // static const String contactActiveIcon =
-  //     '${_baseIcons}contact_active_icon.svg';
   static const String contactInactiveIcon =
       '${_baseIcons}contact_inactive_icon.svg';
 }

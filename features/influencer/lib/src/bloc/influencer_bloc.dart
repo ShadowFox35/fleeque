@@ -1,24 +1,24 @@
 import 'package:domain/domain.dart';
 import 'package:core/core.dart';
 
-part 'home_state.dart';
-part 'home_event.dart';
+part 'influencer_state.dart';
+part 'influencer_event.dart';
 
-class HomeBloc extends Bloc<HomeEvent, HomeState> {
+class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
   final GetInfluencersUseCase _getInfluencersUseCase;
   final SaveInfluencersUseCase _saveInfluencersUseCase;
 
-  HomeBloc({
+  InfluencersBloc({
     required GetInfluencersUseCase getInfluencersUseCase,
     required SaveInfluencersUseCase saveInfluencersUseCase,
   })  : _getInfluencersUseCase = getInfluencersUseCase,
         _saveInfluencersUseCase = saveInfluencersUseCase,
-        super(const HomeState()) {
+        super(const InfluencersState()) {
     on<InitEvent>(_getList);
     add(InitEvent());
   }
 
-  Future<void> _getList(InitEvent event, Emitter<HomeState> emit) async {
+  Future<void> _getList(InitEvent event, Emitter<InfluencersState> emit) async {
     try {
       emit(
         state.copyWith(isLoading: true, error: null),
