@@ -17,7 +17,6 @@ class FilterForm extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: AppColors.black,
       appBar: AppBar(
         backgroundColor: AppColors.black,
@@ -88,8 +87,8 @@ class FilterForm extends StatelessWidget {
                       FilterEvent(
                         request: FilterEntity(
                           country: _countryController.text,
-                          price: int.tryParse(_priceController.text) ?? 100,
-                          time: _timeController.text,
+                          price: int.tryParse(_priceController.text) ?? 500,
+                          time: _timeController.text.isNotEmpty ? _timeController.text : '14.09.2023',
                           followers: int.tryParse(_popularityController.text) ??
                               1000000,
                         ),
@@ -97,19 +96,18 @@ class FilterForm extends StatelessWidget {
                     );
                   },
                   child: AppButton(
-                    buttonText: 'Search...',
+                    buttonText: 'filter',
                     buttonWidth: AppDimens.size_340,
-                    buttonColor: AppColors.black,
-                    buttonTextColor: AppFonts.buttonBlack,
-                    isBordered: true,
+                    buttonColor: AppColors.white,
+                    buttonTextColor: AppFonts.buttonWhite,
                   ),
                 ),
-                AppButton(
-                  buttonText: 'filter',
-                  buttonWidth: AppDimens.size_340,
-                  buttonColor: AppColors.white,
-                  buttonTextColor: AppFonts.buttonWhite,
-                ),
+                // AppButton(
+                //   buttonText: 'filter',
+                //   buttonWidth: AppDimens.size_340,
+                //   buttonColor: AppColors.white,
+                //   buttonTextColor: AppFonts.buttonWhite,
+                // ),
               ],
             ),
           ),
