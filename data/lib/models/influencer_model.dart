@@ -11,8 +11,11 @@ class InfluencerModel with _$InfluencerModel {
   factory InfluencerModel({
     @Default('') @HiveField(0) String? image,
     @Default('') @HiveField(1) String? name,
-    @Default('') @HiveField(2) String? followers,
-    @Default(0) @HiveField(3) int? posts,
+    @Default('') @HiveField(2) String? country,
+    @Default(0) @HiveField(4) int? price,
+    @Default('') @HiveField(2) String? time,
+    @Default('') @HiveField(3) String? followers,
+    @Default(0) @HiveField(4) int? posts,
   }) = _InfluencerModel;
 
   factory InfluencerModel.fromJson(Map<String, dynamic> json) =>

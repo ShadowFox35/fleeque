@@ -57,6 +57,12 @@ class _$AppRouter extends RootStackRouter {
         ),
       );
     },
+    FilterRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const FilterScreen(),
+      );
+    },
     NavigationBarRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -114,6 +120,10 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           AuthorizationRoute.name,
           path: 'sign_up',
+        ),
+        RouteConfig(
+          FilterRoute.name,
+          path: 'filter',
         ),
         RouteConfig(
           NavigationBarRoute.name,
@@ -243,6 +253,18 @@ class AuthorizationRouteArgs {
   String toString() {
     return 'AuthorizationRouteArgs{key: $key, messageText: $messageText}';
   }
+}
+
+/// generated route for
+/// [FilterScreen]
+class FilterRoute extends PageRouteInfo<void> {
+  const FilterRoute()
+      : super(
+          FilterRoute.name,
+          path: 'filter',
+        );
+
+  static const String name = 'FilterRoute';
 }
 
 /// generated route for

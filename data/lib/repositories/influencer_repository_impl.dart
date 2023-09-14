@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:data/data.dart';
 import 'package:data/mappers/influencer_mapper.dart';
 import 'package:domain/domain.dart';
@@ -5,6 +7,9 @@ import 'package:domain/domain.dart';
 class InfluencerRepositoryImpl implements InfluencerRepository {
   final FirebaseProvider _firebaseProvider;
   final HiveProvider _hiveProvider;
+  final StreamController<List<InfluencerEntity>>
+      _influencersEntitiesStreamController =
+      StreamController<List<InfluencerEntity>>.broadcast();
 
   InfluencerRepositoryImpl({
     required FirebaseProvider firebaseProvider,
@@ -14,11 +19,35 @@ class InfluencerRepositoryImpl implements InfluencerRepository {
 
   @override
   Future<List<InfluencerEntity>> getInfluencersList() async {
-    final List<InfluencerModel> result =
+    final List<InfluencerModel> list =
         await _firebaseProvider.fetchInfluencersList();
-    return result
-        .map((InfluencerModel e) => InfluencerMapper.toEntity(e))
-        .toList();
+    final result =
+        list.map((InfluencerModel e) => InfluencerMapper.toEntity(e)).toList();
+
+    //  _influencersEntitiesStreamController.add(result);
+   
+    return result;
+  }
+
+  @override
+  Future<List<InfluencerEntity>> filterInfluencersList(
+      {required FilterEntity data}) async {
+    final List<InfluencerModel> list =
+        await _firebaseProvider.filterInfluencersList(data: data);
+    final result =
+        list.map((InfluencerModel e) => InfluencerMapper.toEntity(e)).toList();
+    _influencersEntitiesStreamController.add(result);
+ 
+    return result;
+  }
+
+  @override
+  Stream<List<InfluencerEntity>> observeInfluencersList() {
+    return _influencersEntitiesStreamController.stream;
+  }
+
+  void dispose() {
+    _influencersEntitiesStreamController.close();
   }
 
   @override

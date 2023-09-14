@@ -45,9 +45,6 @@ class DataDI {
       ),
     );
 
-    // appLocator.registerLazySingleton<InfluencerRepository>(
-    //     () => InfluencerRepositoryImpl(appLocator.get<FirebaseProvider>()));
-
     appLocator.registerLazySingleton<InfluencerRepository>(
       () => InfluencerRepositoryImpl(
         firebaseProvider: appLocator<FirebaseProvider>(),
@@ -95,6 +92,14 @@ class DataDI {
 
     appLocator.registerLazySingleton<GetInfluencersUseCase>(
       () => GetInfluencersUseCase(appLocator.get<InfluencerRepository>()),
+    );
+
+    appLocator.registerLazySingleton<FilterInfluencersUseCase>(
+      () => FilterInfluencersUseCase(appLocator.get<InfluencerRepository>()),
+    );
+
+    appLocator.registerLazySingleton<ObserveInfluencersUseCase>(
+      () => ObserveInfluencersUseCase(appLocator.get<InfluencerRepository>()),
     );
 
     appLocator.registerLazySingleton<SaveInfluencersUseCase>(

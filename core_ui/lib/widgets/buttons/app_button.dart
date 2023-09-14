@@ -5,6 +5,7 @@ class AppButton extends StatelessWidget {
   final String buttonText;
   final double buttonWidth;
   final Color buttonColor;
+  final bool isBordered;
   final TextStyle buttonTextColor;
 
   const AppButton(
@@ -12,7 +13,8 @@ class AppButton extends StatelessWidget {
       required this.buttonText,
       required this.buttonWidth,
       required this.buttonColor,
-      required this.buttonTextColor})
+      required this.buttonTextColor,
+      this.isBordered = false})
       : super(key: key);
 
   @override
@@ -27,6 +29,9 @@ class AppButton extends StatelessWidget {
       decoration: BoxDecoration(
         color: buttonColor,
         borderRadius: BorderRadius.circular(AppDimens.radius_100),
+        border: Border.all(
+          color: isBordered ? buttonTextColor.color! : buttonColor,
+        ),
       ),
       child: Center(
         child: Text(

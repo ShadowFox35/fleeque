@@ -34,6 +34,13 @@ class AppFonts {
     fontWeight: FontWeight.w500,
   );
 
+  static TextStyle underlinedText = GoogleFonts.roboto(
+    decoration: TextDecoration.underline,
+    color: AppColors.white,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle authText = GoogleFonts.roboto(
     fontSize: 14,
     fontWeight: FontWeight.w800,
@@ -94,6 +101,13 @@ class AppFonts {
     fontSize: 10,
     fontWeight: FontWeight.w500,
   );
+
+  static TextStyle labelTextWhite = GoogleFonts.roboto(
+    color: AppColors.white,
+    fontSize: 10,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle appBarText = GoogleFonts.roboto(
     color: AppColors.white,
     fontSize: 10,

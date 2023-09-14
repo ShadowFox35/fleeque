@@ -12,7 +12,10 @@ class InfluencerScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (BuildContext context) => InfluencersBloc(
+        appRouter: appLocator<AppRouter>(),
         getInfluencersUseCase: appLocator.get<GetInfluencersUseCase>(),
+        observeInfluencersUseCase: appLocator.get<ObserveInfluencersUseCase>(),
+        filterInfluencersUseCase: appLocator.get<FilterInfluencersUseCase>(),
         saveInfluencersUseCase: appLocator<SaveInfluencersUseCase>(),
       ),
       child: BlocBuilder<InfluencersBloc, InfluencersState>(
@@ -35,7 +38,7 @@ class InfluencerScreen extends StatelessWidget {
                 HomeAppBar(),
               ],
             ),
-            body: InfluencerForm(state.influencerList),
+            body: const InfluencerForm(),
           ),
         );
       }),

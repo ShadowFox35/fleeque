@@ -1,13 +1,10 @@
 import 'package:core/core.dart';
-import 'package:domain/domain.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:influencer/src/bloc/influencer_bloc.dart';
 
 class InfluencerForm extends StatelessWidget {
-  final List<InfluencerEntity> influencerList;
-
-  const InfluencerForm(this.influencerList, {super.key});
+  const InfluencerForm({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -33,8 +30,15 @@ class InfluencerForm extends StatelessWidget {
                       ),
                       Row(
                         children: [
-                          SvgPicture.asset(
-                            ImagePaths.filterIcon,
+                          GestureDetector(
+                            onTap: () {
+                              BlocProvider.of<InfluencersBloc>(context).add(
+                                NavigateToFilterEvent(),
+                              );
+                            },
+                            child: SvgPicture.asset(
+                              ImagePaths.filterIcon,
+                            ),
                           ),
                           Container(
                             margin: const EdgeInsets.only(
@@ -55,7 +59,8 @@ class InfluencerForm extends StatelessWidget {
                   ),
                   AppList(state.influencerList),
                   Container(
-                    margin: const EdgeInsets.symmetric(vertical: 10),
+                    margin: const EdgeInsets.symmetric(
+                        vertical: AppDimens.padding_10),
                     padding: const EdgeInsets.symmetric(
                         horizontal: AppDimens.padding_25),
                     alignment: Alignment.center,
