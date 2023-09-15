@@ -13,6 +13,8 @@ class AppConstants {
   static const String filter = 'filter';
   static const String influencerButtonText =
       'if you dont find influencer just \n let us know and we will make sure they join Fleeque soon';
+  static const String influencerErrorMessage =
+      'No influencers found matching your request';
 
   static const String aboutTitle = 'About';
   static const String contactTitle = 'Contact';

@@ -31,12 +31,13 @@ class FirebaseProvider {
   Future<List<InfluencerModel>> _filterInfluencersList(
       FilterEntity data) async {
     late List<InfluencerModel> filteredList = [];
+
     DateFormat dateFormat = DateFormat('dd.MM.yyyy');
     final DateTime time = dateFormat.parse(data.time);
 
     int convertToInt(followers) {
-    String modified = followers.substring(0, followers.length - 1);
-    var followersInInt = int.tryParse(modified);
+      String modified = followers.substring(0, followers.length - 1);
+      var followersInInt = int.tryParse(modified);
       return followersInInt! * 1000000;
     }
 
@@ -60,16 +61,11 @@ class FirebaseProvider {
     }
 
     List<InfluencerModel> filterByTime(list) {
-      if (data.time.isNotEmpty) {
-        List<InfluencerModel> newlist = list
-            .where((element) => dateFormat.parse(element.time).isBefore(time))
-            .toList();
-        filteredList = newlist;
-
-        return filteredList;
-      } else {
-        return list;
-      }
+      var newlist = list
+          .where((element) => dateFormat.parse(element.time).isAfter(time))
+          .toList();
+      filteredList = newlist;
+      return filteredList;
     }
 
     final fbList =

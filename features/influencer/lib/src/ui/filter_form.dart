@@ -88,7 +88,9 @@ class FilterForm extends StatelessWidget {
                         request: FilterEntity(
                           country: _countryController.text,
                           price: int.tryParse(_priceController.text) ?? 500,
-                          time: _timeController.text.isNotEmpty ? _timeController.text : '14.09.2023',
+                          time: _timeController.text.isNotEmpty
+                              ? _timeController.text
+                              : '01.01.2019',
                           followers: int.tryParse(_popularityController.text) ??
                               1000000,
                         ),

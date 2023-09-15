@@ -20,7 +20,9 @@ class InfluencerScreen extends StatelessWidget {
       ),
       child: BlocBuilder<InfluencersBloc, InfluencersState>(
           builder: (BuildContext context, InfluencersState state) {
-        if (state.error != null) {}
+        if (state.error != null) {
+          return const Text(AppConstants.influencerErrorMessage);
+        }
         if (state.isLoading) {
           return Center(
             child: CircularProgressIndicator(
