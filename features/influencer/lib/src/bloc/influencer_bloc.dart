@@ -31,6 +31,7 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
         _observeInfluencersUseCase.execute(const NoParams()).listen((list) {
       add(UpdateEvent(influencerList: list));
     });
+
     on<InitEvent>(_onInitEvent);
     on<FilterEvent>(_onFilterEvent);
     on<NavigateToFilterEvent>(_onNavigateToFilterEvent);
@@ -47,7 +48,7 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
       final List<InfluencerEntity> influencers =
           await _getInfluencersUseCase.execute(const NoParams());
       await _saveInfluencersUseCase.execute(influencers);
-      emit(state.copyWith(influencerList: influencers, isLoading: false));
+      emit(state.copyWith(influencerList: influencers, isLoading: false,));
     } catch (ex) {
       emit(
         state.copyWith(error: ex, isLoading: false),
@@ -62,7 +63,7 @@ class InfluencersBloc extends Bloc<InfluencersEvent, InfluencersState> {
         state.copyWith(isLoading: true, error: null),
       );
       emit(state.copyWith(
-          influencerList: event.influencerList, isLoading: false));
+          influencerList: event.influencerList, isLoading: false,));
     } catch (ex) {
       emit(
         state.copyWith(error: ex, isLoading: false),

@@ -18,3 +18,4 @@ export 'package:domain/entities/filter_entity.dart';
 
 export 'package:domain/repositories/authorization_repository.dart';
 export 'package:domain/repositories/influencer_repository.dart';
+export 'package:domain/repositories/filter_repository.dart';

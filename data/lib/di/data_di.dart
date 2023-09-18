@@ -3,6 +3,7 @@ import 'package:data/data.dart';
 import 'package:domain/domain.dart';
 import 'package:data/repositories/authorization_repository_impl.dart';
 import 'package:data/repositories/influencer_repository_impl.dart';
+import 'package:data/repositories/filter_repository_impl.dart';
 
 final DataDI dataDI = DataDI();
 
@@ -51,6 +52,10 @@ class DataDI {
         hiveProvider: appLocator<HiveProvider>(),
       ),
     );
+
+    appLocator.registerLazySingleton<FilterRepository>(
+      () => FilterRepositoryImpl(),
+    );
   }
 
   void _initUseCases() {
@@ -95,11 +100,11 @@ class DataDI {
     );
 
     appLocator.registerLazySingleton<FilterInfluencersUseCase>(
-      () => FilterInfluencersUseCase(appLocator.get<InfluencerRepository>()),
+      () => FilterInfluencersUseCase(appLocator.get<FilterRepository>()),
     );
 
     appLocator.registerLazySingleton<ObserveInfluencersUseCase>(
-      () => ObserveInfluencersUseCase(appLocator.get<InfluencerRepository>()),
+      () => ObserveInfluencersUseCase(appLocator.get<FilterRepository>()),
     );
 
     appLocator.registerLazySingleton<SaveInfluencersUseCase>(

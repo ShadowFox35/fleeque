@@ -51,7 +51,7 @@ class FilterForm extends StatelessWidget {
                   isWhite: true,
                 ),
                 Text(
-                  'Select',
+                  'Cheaper than',
                   style: AppFonts.underlinedText,
                 ),
                 InputField(
@@ -60,7 +60,7 @@ class FilterForm extends StatelessWidget {
                   isWhite: true,
                 ),
                 Text(
-                  'Newest',
+                  'After',
                   style: AppFonts.underlinedText,
                 ),
                 InputField(
