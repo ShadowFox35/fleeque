@@ -44,6 +44,10 @@ part 'app_router.gr.dart';
       path: 'sign_up',
     ),
     AutoRoute(
+      page: FilterScreen,
+      path: 'filter',
+    ),
+    AutoRoute(
       page: NavigationBarScreen,
       path: 'navigation_bar',
       children: [

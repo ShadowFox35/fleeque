@@ -2,6 +2,10 @@ abstract class AsyncUseCase<Input, Output> {
   Future<Output> execute(Input input);
 }
 
+abstract class StreamUseCase<Input, Output> {
+  Stream<Output> execute(Input input);
+}
+
 abstract class UseCase<Input, Output> {
   Output execute(Input input);
 }

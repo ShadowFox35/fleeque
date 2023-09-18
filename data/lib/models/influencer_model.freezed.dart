@@ -25,8 +25,14 @@ mixin _$InfluencerModel {
   @HiveField(1)
   String? get name => throw _privateConstructorUsedError;
   @HiveField(2)
-  String? get followers => throw _privateConstructorUsedError;
+  String? get country => throw _privateConstructorUsedError;
+  @HiveField(4)
+  int? get price => throw _privateConstructorUsedError;
+  @HiveField(2)
+  String? get time => throw _privateConstructorUsedError;
   @HiveField(3)
+  String? get followers => throw _privateConstructorUsedError;
+  @HiveField(4)
   int? get posts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -44,8 +50,11 @@ abstract class $InfluencerModelCopyWith<$Res> {
   $Res call(
       {@HiveField(0) String? image,
       @HiveField(1) String? name,
-      @HiveField(2) String? followers,
-      @HiveField(3) int? posts});
+      @HiveField(2) String? country,
+      @HiveField(4) int? price,
+      @HiveField(2) String? time,
+      @HiveField(3) String? followers,
+      @HiveField(4) int? posts});
 }
 
 /// @nodoc
@@ -63,6 +72,9 @@ class _$InfluencerModelCopyWithImpl<$Res, $Val extends InfluencerModel>
   $Res call({
     Object? image = freezed,
     Object? name = freezed,
+    Object? country = freezed,
+    Object? price = freezed,
+    Object? time = freezed,
     Object? followers = freezed,
     Object? posts = freezed,
   }) {
@@ -74,6 +86,18 @@ class _$InfluencerModelCopyWithImpl<$Res, $Val extends InfluencerModel>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
       followers: freezed == followers
           ? _value.followers
@@ -98,8 +122,11 @@ abstract class _$$_InfluencerModelCopyWith<$Res>
   $Res call(
       {@HiveField(0) String? image,
       @HiveField(1) String? name,
-      @HiveField(2) String? followers,
-      @HiveField(3) int? posts});
+      @HiveField(2) String? country,
+      @HiveField(4) int? price,
+      @HiveField(2) String? time,
+      @HiveField(3) String? followers,
+      @HiveField(4) int? posts});
 }
 
 /// @nodoc
@@ -115,6 +142,9 @@ class __$$_InfluencerModelCopyWithImpl<$Res>
   $Res call({
     Object? image = freezed,
     Object? name = freezed,
+    Object? country = freezed,
+    Object? price = freezed,
+    Object? time = freezed,
     Object? followers = freezed,
     Object? posts = freezed,
   }) {
@@ -126,6 +156,18 @@ class __$$_InfluencerModelCopyWithImpl<$Res>
       name: freezed == name
           ? _value.name
           : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      country: freezed == country
+          ? _value.country
+          : country // ignore: cast_nullable_to_non_nullable
+              as String?,
+      price: freezed == price
+          ? _value.price
+          : price // ignore: cast_nullable_to_non_nullable
+              as int?,
+      time: freezed == time
+          ? _value.time
+          : time // ignore: cast_nullable_to_non_nullable
               as String?,
       followers: freezed == followers
           ? _value.followers
@@ -146,8 +188,11 @@ class _$_InfluencerModel implements _InfluencerModel {
   _$_InfluencerModel(
       {@HiveField(0) this.image = '',
       @HiveField(1) this.name = '',
-      @HiveField(2) this.followers = '',
-      @HiveField(3) this.posts = 0});
+      @HiveField(2) this.country = '',
+      @HiveField(4) this.price = 0,
+      @HiveField(2) this.time = '',
+      @HiveField(3) this.followers = '',
+      @HiveField(4) this.posts = 0});
 
   factory _$_InfluencerModel.fromJson(Map<String, dynamic> json) =>
       _$$_InfluencerModelFromJson(json);
@@ -163,15 +208,27 @@ class _$_InfluencerModel implements _InfluencerModel {
   @override
   @JsonKey()
   @HiveField(2)
-  final String? followers;
+  final String? country;
+  @override
+  @JsonKey()
+  @HiveField(4)
+  final int? price;
+  @override
+  @JsonKey()
+  @HiveField(2)
+  final String? time;
   @override
   @JsonKey()
   @HiveField(3)
+  final String? followers;
+  @override
+  @JsonKey()
+  @HiveField(4)
   final int? posts;
 
   @override
   String toString() {
-    return 'InfluencerModel(image: $image, name: $name, followers: $followers, posts: $posts)';
+    return 'InfluencerModel(image: $image, name: $name, country: $country, price: $price, time: $time, followers: $followers, posts: $posts)';
   }
 
   @override
@@ -181,6 +238,9 @@ class _$_InfluencerModel implements _InfluencerModel {
             other is _$_InfluencerModel &&
             (identical(other.image, image) || other.image == image) &&
             (identical(other.name, name) || other.name == name) &&
+            (identical(other.country, country) || other.country == country) &&
+            (identical(other.price, price) || other.price == price) &&
+            (identical(other.time, time) || other.time == time) &&
             (identical(other.followers, followers) ||
                 other.followers == followers) &&
             (identical(other.posts, posts) || other.posts == posts));
@@ -188,7 +248,8 @@ class _$_InfluencerModel implements _InfluencerModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, image, name, followers, posts);
+  int get hashCode => Object.hash(
+      runtimeType, image, name, country, price, time, followers, posts);
 
   @JsonKey(ignore: true)
   @override
@@ -208,8 +269,11 @@ abstract class _InfluencerModel implements InfluencerModel {
   factory _InfluencerModel(
       {@HiveField(0) final String? image,
       @HiveField(1) final String? name,
-      @HiveField(2) final String? followers,
-      @HiveField(3) final int? posts}) = _$_InfluencerModel;
+      @HiveField(2) final String? country,
+      @HiveField(4) final int? price,
+      @HiveField(2) final String? time,
+      @HiveField(3) final String? followers,
+      @HiveField(4) final int? posts}) = _$_InfluencerModel;
 
   factory _InfluencerModel.fromJson(Map<String, dynamic> json) =
       _$_InfluencerModel.fromJson;
@@ -222,9 +286,18 @@ abstract class _InfluencerModel implements InfluencerModel {
   String? get name;
   @override
   @HiveField(2)
-  String? get followers;
+  String? get country;
+  @override
+  @HiveField(4)
+  int? get price;
+  @override
+  @HiveField(2)
+  String? get time;
   @override
   @HiveField(3)
+  String? get followers;
+  @override
+  @HiveField(4)
   int? get posts;
   @override
   @JsonKey(ignore: true)

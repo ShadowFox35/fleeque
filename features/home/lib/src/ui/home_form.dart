@@ -3,8 +3,6 @@ import 'package:domain/domain.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 import 'package:home/src/bloc/home_bloc.dart';
-import 'package:home/src/ui/home_carousel.dart';
-import 'package:home/src/ui/home_list.dart';
 
 class HomeForm extends StatelessWidget {
   final List<InfluencerEntity> influencerList;
@@ -50,10 +48,15 @@ class HomeForm extends StatelessWidget {
                       ),
                     ],
                   ),
-                  HomeCarousel(state.influencerList),
-                  HomeList(state.influencerList),
+                  AppCarousel(
+                    influencerList: state.influencerList,
+                    carouselHeight: 0.45,
+                    isDetailsShown: true,
+                  ),
+                  AppList(state.influencerList),
                   AppButton(
                     buttonColor: AppColors.black,
+                    buttonWidth: AppDimens.size_340,
                     buttonText: AppConstants.homeButtonText,
                     buttonTextColor: AppFonts.buttonBlack,
                   ),

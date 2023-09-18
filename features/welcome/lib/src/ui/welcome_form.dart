@@ -81,6 +81,7 @@ class WelcomeForm extends StatelessWidget {
                           },
                           child: AppButton(
                             buttonText: AppConstants.getStarted,
+                            buttonWidth: AppDimens.size_250,
                             buttonColor: Theme.of(context).primaryColor,
                             buttonTextColor: AppFonts.buttonWhite,
                           ),
