@@ -63,6 +63,18 @@ class _$AppRouter extends RootStackRouter {
         child: const FilterScreen(),
       );
     },
+    SettingsRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const SettingsScreen(),
+      );
+    },
+    ProfileRoute.name: (routeData) {
+      return MaterialPageX<dynamic>(
+        routeData: routeData,
+        child: const ProfileScreen(),
+      );
+    },
     NavigationBarRoute.name: (routeData) {
       return MaterialPageX<dynamic>(
         routeData: routeData,
@@ -124,6 +136,14 @@ class _$AppRouter extends RootStackRouter {
         RouteConfig(
           FilterRoute.name,
           path: 'filter',
+        ),
+        RouteConfig(
+          SettingsRoute.name,
+          path: 'settings',
+        ),
+        RouteConfig(
+          ProfileRoute.name,
+          path: 'profile',
         ),
         RouteConfig(
           NavigationBarRoute.name,
@@ -265,6 +285,30 @@ class FilterRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'FilterRoute';
+}
+
+/// generated route for
+/// [SettingsScreen]
+class SettingsRoute extends PageRouteInfo<void> {
+  const SettingsRoute()
+      : super(
+          SettingsRoute.name,
+          path: 'settings',
+        );
+
+  static const String name = 'SettingsRoute';
+}
+
+/// generated route for
+/// [ProfileScreen]
+class ProfileRoute extends PageRouteInfo<void> {
+  const ProfileRoute()
+      : super(
+          ProfileRoute.name,
+          path: 'profile',
+        );
+
+  static const String name = 'ProfileRoute';
 }
 
 /// generated route for

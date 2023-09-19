@@ -1,5 +1,7 @@
 import 'package:authorization/authorization.dart';
 import 'package:auto_route/auto_route.dart';
+import 'package:profile/profile.dart';
+import 'package:settings/settings.dart';
 
 import 'package:welcome/welcome.dart';
 import 'package:carousel/carousel.dart';
@@ -46,6 +48,14 @@ part 'app_router.gr.dart';
     AutoRoute(
       page: FilterScreen,
       path: 'filter',
+    ),
+    AutoRoute(
+      page: SettingsScreen,
+      path: 'settings',
+    ),
+    AutoRoute(
+      page: ProfileScreen,
+      path: 'profile',
     ),
     AutoRoute(
       page: NavigationBarScreen,
