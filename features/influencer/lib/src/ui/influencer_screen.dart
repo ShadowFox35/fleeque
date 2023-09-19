@@ -36,7 +36,7 @@ class InfluencerScreen extends StatelessWidget {
             appBar: AppBar(
               backgroundColor: AppColors.black,
               centerTitle: true,
-              actions: const <Widget>[
+              actions: <Widget>[
                 HomeAppBar(),
               ],
             ),

@@ -2,11 +2,10 @@ part of 'influencer_bloc.dart';
 
 abstract class InfluencersEvent {}
 
-class InitEvent extends InfluencersEvent {
-}
+class InitEvent extends InfluencersEvent {}
 
 class UpdateEvent extends InfluencersEvent {
-    final List<InfluencerEntity> influencerList;
+  final List<InfluencerEntity> influencerList;
 
   UpdateEvent({required this.influencerList});
 }

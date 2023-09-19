@@ -32,4 +32,16 @@ class AppConstants {
       'Have you dreamt about appearing on the instagram story of your favorite influencer, why not buy a shoutout on her story tagging you for the world to see?';
   static const String skip = 'skip';
   static const String done = 'done';
+
+  static const String profileTitle = 'Profile';
+  static const String addProfilePicture = 'add picture';
+  static const String logOut = 'Log out';
+  static const String hello = 'Hello';
+
+  static const String profileListDonate = 'Donate';
+  static const String profileListSettings = 'Settings';
+  static const String profileListOrders = 'Orders';
+  static const String profileCreateOffer = 'Create Offer';
+  static const String profileListContact = 'Contact';
+  static const String profileListSupport = 'Support';
 }

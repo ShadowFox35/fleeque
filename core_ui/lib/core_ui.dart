@@ -16,4 +16,5 @@ export './widgets/list/app_list.dart';
 
 export './widgets/circle_bar.dart';
 export './widgets/app_bar.dart';
+export './widgets/profile_app_bar.dart';
 export './widgets/input_field.dart';

@@ -23,6 +23,12 @@ class AppFonts {
     fontWeight: FontWeight.w500,
   );
 
+  static TextStyle regularTextWhite = GoogleFonts.roboto(
+    color: AppColors.white,
+    fontSize: 16,
+    fontWeight: FontWeight.w500,
+  );
+
   static TextStyle singGoogleText = GoogleFonts.roboto(
     fontSize: 16,
     fontWeight: FontWeight.w400,
@@ -42,6 +48,12 @@ class AppFonts {
   );
 
   static TextStyle authText = GoogleFonts.roboto(
+    fontSize: 14,
+    fontWeight: FontWeight.w800,
+  );
+
+  static TextStyle labelTextWhiteWhite = GoogleFonts.roboto(
+    color: AppColors.white,
     fontSize: 14,
     fontWeight: FontWeight.w800,
   );
@@ -108,8 +120,8 @@ class AppFonts {
     fontWeight: FontWeight.w500,
   );
 
-  static TextStyle appBarText = GoogleFonts.roboto(
-    color: AppColors.white,
+  static TextStyle addProfilePictureText = GoogleFonts.roboto(
+    decoration: TextDecoration.underline,
     fontSize: 10,
     fontWeight: FontWeight.w500,
   );
