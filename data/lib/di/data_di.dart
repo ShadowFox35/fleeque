@@ -4,6 +4,7 @@ import 'package:domain/domain.dart';
 import 'package:data/repositories/authorization_repository_impl.dart';
 import 'package:data/repositories/influencer_repository_impl.dart';
 import 'package:data/repositories/filter_repository_impl.dart';
+import 'package:data/repositories/user_repository_impl.dart';
 
 final DataDI dataDI = DataDI();
 
@@ -56,6 +57,13 @@ class DataDI {
     appLocator.registerLazySingleton<FilterRepository>(
       () => FilterRepositoryImpl(),
     );
+
+    appLocator.registerLazySingleton<UserRepository>(
+      () => UserRepositoryImpl(
+        firebaseProvider: appLocator<FirebaseProvider>(),
+        hiveProvider: appLocator<HiveProvider>(),
+      ),
+    );
   }
 
   void _initUseCases() {
@@ -93,6 +101,23 @@ class DataDI {
       () => CheckUserUseCase(
         authorizationRepository: appLocator<AuthorizationRepository>(),
       ),
+    );
+
+    appLocator.registerLazySingleton<GetUserUseCase>(
+      () => GetUserUseCase(appLocator.get<UserRepository>()),
+    );
+
+    appLocator.registerLazySingleton<SaveUserInfoUseCase>(
+      () => SaveUserInfoUseCase(
+        userRepository: appLocator<UserRepository>(),
+      ),
+    );
+
+    appLocator.registerLazySingleton<UpdateUserInfoUseCase>(
+      () => UpdateUserInfoUseCase(appLocator.get<UserRepository>()),
+    );
+    appLocator.registerLazySingleton<ObserveUserUseCase>(
+      () => ObserveUserUseCase(appLocator.get<UserRepository>()),
     );
 
     appLocator.registerLazySingleton<GetInfluencersUseCase>(

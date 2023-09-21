@@ -1,9 +1,9 @@
-import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
 class ProfileAppBar extends StatelessWidget {
-  const ProfileAppBar({super.key});
+  final String title;
+  const ProfileAppBar({required this.title, super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,7 +26,7 @@ class ProfileAppBar extends StatelessWidget {
             ],
           ),
           Text(
-            AppConstants.profileTitle,
+            title,
             style: AppFonts.regularTextWhite,
           ),
           // Text('Settings'),

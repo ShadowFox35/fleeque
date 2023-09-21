@@ -6,14 +6,14 @@ class AppButton extends StatelessWidget {
   final double buttonWidth;
   final Color buttonColor;
   final bool isBordered;
-  final TextStyle buttonTextColor;
+  final TextStyle buttonFontStyle;
 
   const AppButton(
       {Key? key,
       required this.buttonText,
       required this.buttonWidth,
       required this.buttonColor,
-      required this.buttonTextColor,
+      required this.buttonFontStyle,
       this.isBordered = false})
       : super(key: key);
 
@@ -30,13 +30,13 @@ class AppButton extends StatelessWidget {
         color: buttonColor,
         borderRadius: BorderRadius.circular(AppDimens.radius_100),
         border: Border.all(
-          color: isBordered ? buttonTextColor.color! : buttonColor,
+          color: isBordered ? buttonFontStyle.color! : buttonColor,
         ),
       ),
       child: Center(
         child: Text(
           buttonText.toUpperCase(),
-          style: buttonTextColor,
+          style: buttonFontStyle,
         ),
       ),
     );

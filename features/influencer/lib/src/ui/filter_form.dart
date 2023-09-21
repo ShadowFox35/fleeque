@@ -101,7 +101,7 @@ class FilterForm extends StatelessWidget {
                     buttonText: 'filter',
                     buttonWidth: AppDimens.size_340,
                     buttonColor: AppColors.white,
-                    buttonTextColor: AppFonts.buttonWhite,
+                    buttonFontStyle: AppFonts.buttonWhite,
                   ),
                 ),
               ],

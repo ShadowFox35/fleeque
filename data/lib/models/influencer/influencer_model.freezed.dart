@@ -26,13 +26,13 @@ mixin _$InfluencerModel {
   String? get name => throw _privateConstructorUsedError;
   @HiveField(2)
   String? get country => throw _privateConstructorUsedError;
-  @HiveField(4)
-  int? get price => throw _privateConstructorUsedError;
-  @HiveField(2)
-  String? get time => throw _privateConstructorUsedError;
   @HiveField(3)
-  String? get followers => throw _privateConstructorUsedError;
+  int? get price => throw _privateConstructorUsedError;
   @HiveField(4)
+  String? get time => throw _privateConstructorUsedError;
+  @HiveField(5)
+  String? get followers => throw _privateConstructorUsedError;
+  @HiveField(6)
   int? get posts => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
@@ -51,10 +51,10 @@ abstract class $InfluencerModelCopyWith<$Res> {
       {@HiveField(0) String? image,
       @HiveField(1) String? name,
       @HiveField(2) String? country,
-      @HiveField(4) int? price,
-      @HiveField(2) String? time,
-      @HiveField(3) String? followers,
-      @HiveField(4) int? posts});
+      @HiveField(3) int? price,
+      @HiveField(4) String? time,
+      @HiveField(5) String? followers,
+      @HiveField(6) int? posts});
 }
 
 /// @nodoc
@@ -123,10 +123,10 @@ abstract class _$$_InfluencerModelCopyWith<$Res>
       {@HiveField(0) String? image,
       @HiveField(1) String? name,
       @HiveField(2) String? country,
-      @HiveField(4) int? price,
-      @HiveField(2) String? time,
-      @HiveField(3) String? followers,
-      @HiveField(4) int? posts});
+      @HiveField(3) int? price,
+      @HiveField(4) String? time,
+      @HiveField(5) String? followers,
+      @HiveField(6) int? posts});
 }
 
 /// @nodoc
@@ -189,10 +189,10 @@ class _$_InfluencerModel implements _InfluencerModel {
       {@HiveField(0) this.image = '',
       @HiveField(1) this.name = '',
       @HiveField(2) this.country = '',
-      @HiveField(4) this.price = 0,
-      @HiveField(2) this.time = '',
-      @HiveField(3) this.followers = '',
-      @HiveField(4) this.posts = 0});
+      @HiveField(3) this.price = 0,
+      @HiveField(4) this.time = '',
+      @HiveField(5) this.followers = '',
+      @HiveField(6) this.posts = 0});
 
   factory _$_InfluencerModel.fromJson(Map<String, dynamic> json) =>
       _$$_InfluencerModelFromJson(json);
@@ -211,19 +211,19 @@ class _$_InfluencerModel implements _InfluencerModel {
   final String? country;
   @override
   @JsonKey()
-  @HiveField(4)
+  @HiveField(3)
   final int? price;
   @override
   @JsonKey()
-  @HiveField(2)
+  @HiveField(4)
   final String? time;
   @override
   @JsonKey()
-  @HiveField(3)
+  @HiveField(5)
   final String? followers;
   @override
   @JsonKey()
-  @HiveField(4)
+  @HiveField(6)
   final int? posts;
 
   @override
@@ -270,10 +270,10 @@ abstract class _InfluencerModel implements InfluencerModel {
       {@HiveField(0) final String? image,
       @HiveField(1) final String? name,
       @HiveField(2) final String? country,
-      @HiveField(4) final int? price,
-      @HiveField(2) final String? time,
-      @HiveField(3) final String? followers,
-      @HiveField(4) final int? posts}) = _$_InfluencerModel;
+      @HiveField(3) final int? price,
+      @HiveField(4) final String? time,
+      @HiveField(5) final String? followers,
+      @HiveField(6) final int? posts}) = _$_InfluencerModel;
 
   factory _InfluencerModel.fromJson(Map<String, dynamic> json) =
       _$_InfluencerModel.fromJson;
@@ -288,16 +288,16 @@ abstract class _InfluencerModel implements InfluencerModel {
   @HiveField(2)
   String? get country;
   @override
-  @HiveField(4)
+  @HiveField(3)
   int? get price;
   @override
-  @HiveField(2)
+  @HiveField(4)
   String? get time;
   @override
-  @HiveField(3)
+  @HiveField(5)
   String? get followers;
   @override
-  @HiveField(4)
+  @HiveField(6)
   int? get posts;
   @override
   @JsonKey(ignore: true)

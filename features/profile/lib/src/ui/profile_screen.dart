@@ -1,5 +1,6 @@
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
+import 'package:domain/domain.dart';
 import 'package:flutter/material.dart';
 import 'package:profile/src/bloc/profile_bloc.dart';
 import 'package:profile/src/ui/profile_form.dart';
@@ -13,6 +14,10 @@ class ProfileScreen extends StatelessWidget {
       create: (BuildContext context) => ProfileBloc(
         appRouter: appLocator<AppRouter>(),
         authService: appLocator<AuthService>(),
+        checkUserUseCase: appLocator<CheckUserUseCase>(),
+        signOutUseCase: appLocator<SignOutUseCase>(),
+        getUserUseCase: appLocator<GetUserUseCase>(),
+        saveUserInfoUseCase: appLocator<SaveUserInfoUseCase>(),
       ),
       child: BlocBuilder<ProfileBloc, ProfileState>(
           builder: (BuildContext context, ProfileState state) {
@@ -22,7 +27,9 @@ class ProfileScreen extends StatelessWidget {
               backgroundColor: AppColors.black,
               automaticallyImplyLeading: false,
               actions: const <Widget>[
-                ProfileAppBar(),
+                ProfileAppBar(
+                  title: AppConstants.profileTitle,
+                ),
               ],
             ),
             body: const ProfileForm(),

@@ -58,7 +58,7 @@ class HomeForm extends StatelessWidget {
                     buttonColor: AppColors.black,
                     buttonWidth: AppDimens.size_340,
                     buttonText: AppConstants.homeButtonText,
-                    buttonTextColor: AppFonts.buttonBlack,
+                    buttonFontStyle: AppFonts.buttonBlack,
                   ),
                 ],
               ),

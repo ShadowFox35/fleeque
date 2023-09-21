@@ -44,4 +44,11 @@ class AppConstants {
   static const String profileCreateOffer = 'Create Offer';
   static const String profileListContact = 'Contact';
   static const String profileListSupport = 'Support';
+
+  static const String settingsButtonSave = 'Save';
+  static const String settingsLabelName = 'Your Name';
+  static const String settingsLabelEmail = 'Your Email';
+  static const String settingsLabelNumber = 'Your Number';
+  static const String settingsLabelInstName = 'Your INSTAGRAM NAME';
+  static const String settingsLabelBank = 'Your BANK DETAILS';
 }

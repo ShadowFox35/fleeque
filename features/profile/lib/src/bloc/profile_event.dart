@@ -4,6 +4,8 @@ abstract class ProfileEvent {}
 
 class InitialEvent extends ProfileEvent {}
 
+class SignOutEvent extends ProfileEvent {}
+
 class NavigateEvent extends ProfileEvent {
   final String path;
 

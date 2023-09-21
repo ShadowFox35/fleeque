@@ -57,7 +57,9 @@ class _ProfileFormState extends State<ProfileForm> {
                       padding: const EdgeInsets.only(top: AppDimens.padding_20),
                       child: GestureDetector(
                         onTap: () {
-                          null;
+                          BlocProvider.of<ProfileBloc>(context).add(
+                            SignOutEvent(),
+                          );
                         },
                         child: Text(
                           AppConstants.logOut,
@@ -74,7 +76,7 @@ class _ProfileFormState extends State<ProfileForm> {
                             style: AppFonts.labelText,
                           ),
                           Text(
-                            'name',
+                            state.userInfo.name,
                             style: AppFonts.title,
                           ),
                         ],

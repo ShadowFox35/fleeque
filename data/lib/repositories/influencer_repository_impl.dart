@@ -19,7 +19,7 @@ class InfluencerRepositoryImpl implements InfluencerRepository {
     final List<InfluencerModel> list =
         await _firebaseProvider.fetchInfluencersList();
     final result =
-        list.map((InfluencerModel e) => InfluencerMapper.toEntity(e)).toList();   
+        list.map((InfluencerModel e) => InfluencerMapper.toEntity(e)).toList();
     return result;
   }
 
