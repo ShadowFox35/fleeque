@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 import 'package:domain/domain.dart';
 import 'package:data/data.dart';
 import 'package:data/mappers/user_mapper.dart';
@@ -17,15 +18,10 @@ class UserRepositoryImpl implements UserRepository {
         _hiveProvider = hiveProvider;
 
   @override
-  Future<void> updateUserInfo({required UserEntity data}) async {
-    final UserModel infoToUpdate = UserMapper.toModel(data);
-    _updateUserInfo(data: infoToUpdate);
-  }
-
-  Future<void> _updateUserInfo({required UserModel data}) async {
-    final String? uid = _hiveProvider.fetchUserId();
-    await _firebaseProvider.updateUserInfo(uid, data);
-    _hiveProvider.clearUserInfo();
+  Future<String> pickUserImage({required File image}) async {
+    final String uid = _hiveProvider.fetchUserId()!;
+    final url = await _firebaseProvider.pickUserImage(uid, image);
+    return url;
   }
 
   @override
@@ -39,8 +35,19 @@ class UserRepositoryImpl implements UserRepository {
       userInfo = await _firebaseProvider.getUserInfo(uid!);
     }
     result = UserMapper.toEntity(userInfo);
-    // _userEntitiesStreamController.add(result);
     return result;
+  }
+
+  @override
+  Future<void> updateUserInfo({required UserEntity data}) async {
+    final UserModel infoToUpdate = UserMapper.toModel(data);
+    _updateUserInfo(data: infoToUpdate);
+  }
+
+  Future<void> _updateUserInfo({required UserModel data}) async {
+    final String? uid = _hiveProvider.fetchUserId();
+    await _firebaseProvider.updateUserInfo(uid, data);
+    _hiveProvider.clearUserInfo();
   }
 
   @override

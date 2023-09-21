@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:io';
 
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
@@ -15,6 +16,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
   final UpdateUserInfoUseCase _updateUserInfoUseCase;
   final ObserveUserUseCase _observeUserInfoUseCase;
   final SaveUserInfoUseCase _saveUserInfoUseCase;
+  final PickUserImageUseCase _pickUserImageUseCase;
 
   StreamSubscription<UserEntity>? _subscription;
 
@@ -27,6 +29,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     required UpdateUserInfoUseCase updateUserInfoUseCase,
     required ObserveUserUseCase observeUserInfoUseCase,
     required SaveUserInfoUseCase saveUserInfoUseCase,
+    required PickUserImageUseCase pickUserImageUseCase,
   })  : _appRouter = appRouter,
         _authService = authService,
         _signOutUseCase = signOutUseCase,
@@ -34,13 +37,15 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         _getUserUseCase = getUserUseCase,
         _updateUserInfoUseCase = updateUserInfoUseCase,
         _observeUserInfoUseCase = observeUserInfoUseCase,
-         _saveUserInfoUseCase = saveUserInfoUseCase,
+        _saveUserInfoUseCase = saveUserInfoUseCase,
+        _pickUserImageUseCase = pickUserImageUseCase,
         super(const SettingsState()) {
     _subscription ??=
         _observeUserInfoUseCase.execute(const NoParams()).listen((info) {
       add(ObserveEvent(userInfo: info));
     });
     on<InitialEvent>(_onInitialEvent);
+    on<PickImageEvent>(_onPickImageEvent);
     on<AddInfoEvent>(_onAddInfoEvent);
     on<ObserveEvent>(_onObserveEvent);
     on<SignOutEvent>(_onSignOutEvent);
@@ -63,6 +68,21 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
     }
   }
 
+  Future<void> _onPickImageEvent(
+      PickImageEvent event, Emitter<SettingsState> emit) async {
+    try {
+      emit(
+        state.copyWith(isLoading: true, error: null),
+      );
+      final url = await _pickUserImageUseCase.execute(event.image);
+      emit(state.copyWith(isLoading: false, imageUrl: url));
+    } catch (ex) {
+      emit(
+        state.copyWith(isLoading: false, error: ex),
+      );
+    }
+  }
+
   Future<void> _onAddInfoEvent(
       AddInfoEvent event, Emitter<SettingsState> emit) async {
     try {
@@ -70,8 +90,6 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
         state.copyWith(error: null),
       );
       await _updateUserInfoUseCase.execute(event.userInfo);
-      // final UserEntity updatedInfo =
-      //     await _getUserUseCase.execute(const NoParams());
       emit(state.copyWith(userInfo: event.userInfo));
     } catch (ex) {
       emit(

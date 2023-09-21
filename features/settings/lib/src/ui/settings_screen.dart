@@ -20,6 +20,7 @@ class SettingsScreen extends StatelessWidget {
         updateUserInfoUseCase: appLocator.get<UpdateUserInfoUseCase>(),
         observeUserInfoUseCase: appLocator.get<ObserveUserUseCase>(),
         saveUserInfoUseCase: appLocator<SaveUserInfoUseCase>(),
+        pickUserImageUseCase: appLocator<PickUserImageUseCase>(),
       ),
       child: BlocBuilder<SettingsBloc, SettingsState>(
           builder: (BuildContext context, SettingsState state) {

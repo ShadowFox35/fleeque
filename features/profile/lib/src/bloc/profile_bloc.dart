@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:core/core.dart';
 import 'package:domain/domain.dart';
 
@@ -11,6 +13,9 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
   final CheckUserUseCase _checkUserUseCase;
   final GetUserUseCase _getUserUseCase;
   final SaveUserInfoUseCase _saveUserInfoUseCase;
+  final ObserveUserUseCase _observeUserInfoUseCase;
+
+  StreamSubscription<UserEntity>? _subscription;
 
   ProfileBloc({
     required AuthService authService,
@@ -19,14 +24,21 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     required CheckUserUseCase checkUserUseCase,
     required GetUserUseCase getUserUseCase,
     required SaveUserInfoUseCase saveUserInfoUseCase,
+    required ObserveUserUseCase observeUserInfoUseCase,
   })  : _appRouter = appRouter,
         _authService = authService,
         _signOutUseCase = signOutUseCase,
         _checkUserUseCase = checkUserUseCase,
         _getUserUseCase = getUserUseCase,
         _saveUserInfoUseCase = saveUserInfoUseCase,
+        _observeUserInfoUseCase = observeUserInfoUseCase,
         super(const ProfileState()) {
+    _subscription ??=
+        _observeUserInfoUseCase.execute(const NoParams()).listen((info) {
+      add(ObserveEvent(userInfo: info));
+    });
     on<InitialEvent>(_onInitialEvent);
+    on<ObserveEvent>(_onObserveEvent);
     on<NavigateEvent>(_onNavigateEvent);
     on<SignOutEvent>(_onSignOutEvent);
     add(InitialEvent());
@@ -46,6 +58,20 @@ class ProfileBloc extends Bloc<ProfileEvent, ProfileState> {
     } catch (ex) {
       emit(
         state.copyWith(error: ex, isLoading: false),
+      );
+    }
+  }
+
+  Future<void> _onObserveEvent(
+      ObserveEvent event, Emitter<ProfileState> emit) async {
+    try {
+      emit(
+        state.copyWith(error: null),
+      );
+      emit(state.copyWith(userInfo: event.userInfo));
+    } catch (ex) {
+      emit(
+        state.copyWith(error: ex),
       );
     }
   }

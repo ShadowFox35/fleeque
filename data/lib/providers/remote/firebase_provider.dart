@@ -1,9 +1,23 @@
+import 'dart:io';
+
 import 'package:core/core.dart';
 import 'package:data/data.dart';
 
 class FirebaseProvider {
   final FbCollection = FirebaseFirestore.instance.collection('Influencers');
   final FbUsers = FirebaseFirestore.instance.collection('users');
+  final FirebaseStorage _storage = FirebaseStorage.instance;
+
+  Future pickUserImage(String uid, File image) async {
+    UploadTask uploadTask = _storage
+        .ref()
+        .child('userProfilePictures/${uid}/profilePicture.jpg')
+        .putFile(image);
+
+    TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
+    String downloadURL = await taskSnapshot.ref.getDownloadURL();
+    return downloadURL;
+  }
 
   Future<List<InfluencerModel>> fetchInfluencersList() async {
     late final List<InfluencerModel> influencersList = [];

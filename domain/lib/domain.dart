@@ -15,6 +15,7 @@ export 'package:domain/usecases/user/get_user_usecase.dart';
 export 'package:domain/usecases/user/save_user_usecase.dart';
 export 'package:domain/usecases/user/update_user_usecase.dart';
 export 'package:domain/usecases/user/observe_user_usecase.dart';
+export 'package:domain/usecases/user/pick_image_usecase.dart';
 
 export 'package:domain/entities/authorization_entity.dart';
 export 'package:domain/entities/influencer_entity.dart';

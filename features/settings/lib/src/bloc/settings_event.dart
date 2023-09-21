@@ -14,4 +14,9 @@ class ObserveEvent extends SettingsEvent {
   ObserveEvent({required this.userInfo});
 }
 
+class PickImageEvent extends SettingsEvent {
+  final File image;
+  PickImageEvent(this.image);
+}
+
 class SignOutEvent extends SettingsEvent {}

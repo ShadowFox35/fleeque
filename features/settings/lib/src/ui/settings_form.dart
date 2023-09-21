@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:domain/domain.dart';
@@ -5,13 +7,19 @@ import 'package:flutter/material.dart';
 import 'package:settings/src/bloc/settings_bloc.dart';
 
 class SettingsForm extends StatelessWidget {
+  SettingsForm({super.key});
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _numberController = TextEditingController();
   final TextEditingController _instNameController = TextEditingController();
   final TextEditingController _bankController = TextEditingController();
 
-  SettingsForm({super.key});
+  Future<File> pickImageFromGallery() async {
+    final returnedImage =
+        await ImagePicker().pickImage(source: ImageSource.gallery);
+    final image = File(returnedImage!.path);
+    return image;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -23,6 +31,7 @@ class SettingsForm extends StatelessWidget {
         _numberController.text = state.userInfo.number;
         _instNameController.text = state.userInfo.instagram;
         _bankController.text = state.userInfo.bank;
+
         return SafeArea(
           child: Container(
             alignment: Alignment.center,
@@ -35,20 +44,54 @@ class SettingsForm extends StatelessWidget {
               children: [
                 Column(
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      width: AppDimens.size_130,
-                      height: AppDimens.size_130,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.black,
+                    Builder(builder: (context) {
+                      if (state.isLoading) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).focusColor),
+                          ),
+                        );
+                      }
+                      if (state.imageUrl != null) {
+                        return SizedBox(
+                          width: AppDimens.size_130,
+                          height: AppDimens.size_130,
+                          child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(AppDimens.radius_100),
+                            child: Image.network(
+                              state.imageUrl!,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }
+                      return Container(
+                        alignment: Alignment.center,
+                        width: AppDimens.size_130,
+                        height: AppDimens.size_130,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColors.black,
+                          ),
+                          borderRadius:
+                              BorderRadius.circular(AppDimens.radius_100),
                         ),
-                        borderRadius:
-                            BorderRadius.circular(AppDimens.radius_100),
-                      ),
-                      child: Text(
-                        AppConstants.addProfilePicture.toUpperCase(),
-                        style: AppFonts.addProfilePictureText,
+                      );
+                    }),
+                    Container(
+                      padding: const EdgeInsets.only(top: AppDimens.padding_20),
+                      child: GestureDetector(
+                        onTap: () async {
+                          BlocProvider.of<SettingsBloc>(context).add(
+                            PickImageEvent(await pickImageFromGallery()),
+                          );
+                        },
+                        child: Text(
+                          AppConstants.addProfilePicture.toUpperCase(),
+                          style: AppFonts.addProfilePictureText,
+                        ),
                       ),
                     ),
                     Container(

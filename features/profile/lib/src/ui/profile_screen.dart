@@ -18,6 +18,7 @@ class ProfileScreen extends StatelessWidget {
         signOutUseCase: appLocator<SignOutUseCase>(),
         getUserUseCase: appLocator<GetUserUseCase>(),
         saveUserInfoUseCase: appLocator<SaveUserInfoUseCase>(),
+        observeUserInfoUseCase: appLocator<ObserveUserUseCase>(),
       ),
       child: BlocBuilder<ProfileBloc, ProfileState>(
           builder: (BuildContext context, ProfileState state) {
