@@ -13,6 +13,8 @@ export 'package:domain/usecases/influencers/save_influencers_usecase.dart';
 export 'package:domain/usecases/influencers/observe_influencers_usecase.dart';
 export 'package:domain/usecases/user/get_user_usecase.dart';
 export 'package:domain/usecases/user/save_user_usecase.dart';
+export 'package:domain/usecases/user/save_image_usecase.dart';
+export 'package:domain/usecases/user/get_image_usecase.dart';
 export 'package:domain/usecases/user/update_user_usecase.dart';
 export 'package:domain/usecases/user/observe_user_usecase.dart';
 export 'package:domain/usecases/user/pick_image_usecase.dart';

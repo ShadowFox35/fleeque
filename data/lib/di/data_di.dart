@@ -112,6 +112,12 @@ class DataDI {
         userRepository: appLocator<UserRepository>(),
       ),
     );
+
+    // appLocator.registerLazySingleton<SaveUserImageUseCase>(
+    //   () => SaveUserImageUseCase(
+    //     userRepository: appLocator<UserRepository>(),
+    //   ),
+    // );
     appLocator.registerLazySingleton<PickUserImageUseCase>(
       () => PickUserImageUseCase(appLocator.get<UserRepository>()),
     );
@@ -121,6 +127,9 @@ class DataDI {
     );
     appLocator.registerLazySingleton<ObserveUserUseCase>(
       () => ObserveUserUseCase(appLocator.get<UserRepository>()),
+    );
+    appLocator.registerLazySingleton<GetImageUseCase>(
+      () => GetImageUseCase(appLocator.get<UserRepository>()),
     );
 
     appLocator.registerLazySingleton<GetInfluencersUseCase>(

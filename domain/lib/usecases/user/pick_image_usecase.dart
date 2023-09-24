@@ -9,5 +9,5 @@ class PickUserImageUseCase extends AsyncUseCase<File, String> {
 
   @override
   Future<String> execute(File input) async =>
-      userRepository.pickUserImage(image: input);
+      await userRepository.getUserImageUrl(image: input);
 }

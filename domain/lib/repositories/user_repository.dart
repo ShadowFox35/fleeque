@@ -8,6 +8,7 @@ abstract class UserRepository {
   });
   Stream<UserEntity> observeUserInfo();
   Future<UserEntity> getUserInfo();
-  Future<String> pickUserImage({required File image});
+  Future<String> getUserImagefromStorage();
+  Future<String> getUserImageUrl({required File image});
   Future<void> saveUserInfo(UserEntity userInfo);
 }

@@ -60,6 +60,7 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       );
       final UserEntity userInfo =
           await _getUserUseCase.execute(const NoParams());
+      // await _getimageUseCase.execute(const NoParams());
       emit(state.copyWith(userInfo: userInfo));
     } catch (ex) {
       emit(
@@ -74,8 +75,10 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       emit(
         state.copyWith(isLoading: true, error: null),
       );
-      final url = await _pickUserImageUseCase.execute(event.image);
-      emit(state.copyWith(isLoading: false, imageUrl: url));
+      await _pickUserImageUseCase.execute(event.image);
+      final UserEntity userInfo =
+          await _getUserUseCase.execute(const NoParams());
+      emit(state.copyWith(isLoading: false, userInfo: userInfo));
     } catch (ex) {
       emit(
         state.copyWith(isLoading: false, error: ex),

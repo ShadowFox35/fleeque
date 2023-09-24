@@ -14,6 +14,7 @@ class UserModel with _$UserModel {
     @Default('') @HiveField(2) String? number,
     @Default('') @HiveField(3) String? instagram,
     @Default('') @HiveField(4) String? bank,
+    @Default('') @HiveField(5) String? imageUrl,
   }) = _UserModel;
 
   factory UserModel.fromJson(Map<String, dynamic> json) =>

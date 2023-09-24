@@ -4,6 +4,7 @@ class UserEntity {
   final String number;
   final String instagram;
   final String bank;
+  final String imageUrl;
 
   const UserEntity({
     required this.name,
@@ -11,5 +12,6 @@ class UserEntity {
     required this.number,
     required this.instagram,
     required this.bank,
+    required this.imageUrl,
   });
 }

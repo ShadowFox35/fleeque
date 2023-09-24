@@ -18,22 +18,36 @@ class UserRepositoryImpl implements UserRepository {
         _hiveProvider = hiveProvider;
 
   @override
-  Future<String> pickUserImage({required File image}) async {
+  Future<String> getUserImageUrl({required File image}) async {
     final String uid = _hiveProvider.fetchUserId()!;
-    final url = await _firebaseProvider.pickUserImage(uid, image);
+    final url = await _firebaseProvider.getUserImageUrl(uid, image);
+    updateUserImage(uid, url);
     return url;
+  }
+
+  Future<void> updateUserImage(uid, url) async {
+    await _hiveProvider.clearUserImage();
+    await _firebaseProvider.updateUserImage(uid, url);
+    await _hiveProvider.saveUserImage(url);
+  }
+
+  @override
+  Future<String> getUserImagefromStorage() async {
+    late final String urlFromStorage;
+    if (_hiveProvider.fetchUserImage() != null) {
+      urlFromStorage = _hiveProvider.fetchUserImage()!;
+    } else {
+      urlFromStorage = '';
+    }
+    return urlFromStorage;
   }
 
   @override
   Future<UserEntity> getUserInfo() async {
     late final UserEntity result;
     late final UserModel userInfo;
-    if (_hiveProvider.fetchUserInfoBox() != null) {
-      userInfo = _hiveProvider.fetchUserInfoBox()!;
-    } else {
-      final String? uid = _hiveProvider.fetchUserId();
-      userInfo = await _firebaseProvider.getUserInfo(uid!);
-    }
+    final String? uid = _hiveProvider.fetchUserId();
+    userInfo = await _firebaseProvider.getUserInfo(uid!);
     result = UserMapper.toEntity(userInfo);
     return result;
   }
@@ -41,7 +55,12 @@ class UserRepositoryImpl implements UserRepository {
   @override
   Future<void> updateUserInfo({required UserEntity data}) async {
     final UserModel infoToUpdate = UserMapper.toModel(data);
+    addUserInfotoStream(data);
     _updateUserInfo(data: infoToUpdate);
+  }
+
+  void addUserInfotoStream(UserEntity userInfo) {
+    _userEntitiesStreamController.sink.add(userInfo);
   }
 
   Future<void> _updateUserInfo({required UserModel data}) async {

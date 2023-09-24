@@ -31,7 +31,6 @@ class SettingsForm extends StatelessWidget {
         _numberController.text = state.userInfo.number;
         _instNameController.text = state.userInfo.instagram;
         _bankController.text = state.userInfo.bank;
-
         return SafeArea(
           child: Container(
             alignment: Alignment.center,
@@ -49,11 +48,12 @@ class SettingsForm extends StatelessWidget {
                         return Center(
                           child: CircularProgressIndicator(
                             valueColor: AlwaysStoppedAnimation<Color>(
-                                Theme.of(context).focusColor),
+                              Theme.of(context).focusColor,
+                            ),
                           ),
                         );
                       }
-                      if (state.imageUrl != null) {
+                      if (state.userInfo.imageUrl != '') {
                         return SizedBox(
                           width: AppDimens.size_130,
                           height: AppDimens.size_130,
@@ -61,7 +61,7 @@ class SettingsForm extends StatelessWidget {
                             borderRadius:
                                 BorderRadius.circular(AppDimens.radius_100),
                             child: Image.network(
-                              state.imageUrl!,
+                              state.userInfo.imageUrl,
                               fit: BoxFit.cover,
                             ),
                           ),
@@ -154,7 +154,8 @@ class SettingsForm extends StatelessWidget {
                             email: _emailController.text,
                             number: _numberController.text,
                             instagram: _instNameController.text,
-                            bank: _bankController.text),
+                            bank: _bankController.text,
+                            imageUrl: state.userInfo.imageUrl),
                       ),
                     );
                   },

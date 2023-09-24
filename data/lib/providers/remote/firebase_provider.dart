@@ -8,7 +8,7 @@ class FirebaseProvider {
   final FbUsers = FirebaseFirestore.instance.collection('users');
   final FirebaseStorage _storage = FirebaseStorage.instance;
 
-  Future pickUserImage(String uid, File image) async {
+  Future<String> getUserImageUrl (String uid, File image) async {
     UploadTask uploadTask = _storage
         .ref()
         .child('userProfilePictures/${uid}/profilePicture.jpg')
@@ -17,6 +17,10 @@ class FirebaseProvider {
     TaskSnapshot taskSnapshot = await uploadTask.whenComplete(() => null);
     String downloadURL = await taskSnapshot.ref.getDownloadURL();
     return downloadURL;
+  }
+
+  Future<void> updateUserImage(uid, downloadURL) async {
+    await FbUsers.doc(uid).update({'imageUrl': downloadURL});
   }
 
   Future<List<InfluencerModel>> fetchInfluencersList() async {
@@ -35,7 +39,6 @@ class FirebaseProvider {
   Future<UserModel> getUserInfo(String uid) async {
     final DocumentSnapshot<Map<String, dynamic>> userDoc =
         await FbUsers.doc(uid).get();
-
     final UserModel userData =
         UserModel.fromJson(userDoc.data() as Map<String, dynamic>);
     return userData;

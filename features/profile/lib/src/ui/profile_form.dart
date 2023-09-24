@@ -37,22 +37,58 @@ class _ProfileFormState extends State<ProfileForm> {
               children: [
                 Column(
                   children: [
-                    Container(
-                      alignment: Alignment.center,
-                      width: AppDimens.size_130,
-                      height: AppDimens.size_130,
-                      decoration: BoxDecoration(
-                        border: Border.all(
-                          color: AppColors.black,
+                    Builder(builder: (context) {
+                      if (state.isLoading) {
+                        return Center(
+                          child: CircularProgressIndicator(
+                            valueColor: AlwaysStoppedAnimation<Color>(
+                                Theme.of(context).focusColor),
+                          ),
+                        );
+                      }
+                      if (state.userInfo.imageUrl != '') {
+                        return SizedBox(
+                          width: AppDimens.size_130,
+                          height: AppDimens.size_130,
+                          child: ClipRRect(
+                            borderRadius:
+                                BorderRadius.circular(AppDimens.radius_100),
+                            child: Image.network(
+                              state.userInfo.imageUrl,
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                        );
+                      }
+                      return Container(
+                        alignment: Alignment.center,
+                        width: AppDimens.size_130,
+                        height: AppDimens.size_130,
+                        decoration: BoxDecoration(
+                          border: Border.all(
+                            color: AppColors.black,
+                          ),
+                          borderRadius:
+                              BorderRadius.circular(AppDimens.radius_100),
                         ),
-                        borderRadius:
-                            BorderRadius.circular(AppDimens.radius_100),
-                      ),
-                      child: Text(
-                        AppConstants.addProfilePicture.toUpperCase(),
-                        style: AppFonts.addProfilePictureText,
-                      ),
-                    ),
+                      );
+                    }),
+                    // Container(
+                    //   alignment: Alignment.center,
+                    //   width: AppDimens.size_130,
+                    //   height: AppDimens.size_130,
+                    //   decoration: BoxDecoration(
+                    //     border: Border.all(
+                    //       color: AppColors.black,
+                    //     ),
+                    //     borderRadius:
+                    //         BorderRadius.circular(AppDimens.radius_100),
+                    //   ),
+                    //   child: Text(
+                    //     AppConstants.addProfilePicture.toUpperCase(),
+                    //     style: AppFonts.addProfilePictureText,
+                    //   ),
+                    // ),
                     Container(
                       padding: const EdgeInsets.only(top: AppDimens.padding_20),
                       child: GestureDetector(
