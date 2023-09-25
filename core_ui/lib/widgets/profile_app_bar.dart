@@ -1,3 +1,4 @@
+import 'package:core/core.dart';
 import 'package:core_ui/core_ui.dart';
 import 'package:flutter/material.dart';
 
@@ -22,18 +23,15 @@ class ProfileAppBar extends StatelessWidget {
                   Navigator.of(context).pop();
                 },
               ),
-              const Text('Back'),
+              const Text(AppConstants.profileAppBarBack),
             ],
           ),
           Text(
             title,
             style: AppFonts.regularTextWhite,
           ),
-          // Text('Settings'),
           IconButton(
-            icon: SvgPicture.asset(
-              ImagePaths.informationIcon,
-            ),
+            icon: SvgPicture.asset(ImagePaths.informationIcon),
             onPressed: () => {null},
           ),
         ],

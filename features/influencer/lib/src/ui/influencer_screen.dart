@@ -34,6 +34,7 @@ class InfluencerScreen extends StatelessWidget {
         return Center(
           child: Scaffold(
             appBar: AppBar(
+              automaticallyImplyLeading: false,
               backgroundColor: AppColors.black,
               centerTitle: true,
               actions: <Widget>[
