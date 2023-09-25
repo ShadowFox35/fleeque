@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
   flutter_svg: ^2.0.5
-  google_fonts: ^3.0.1
+  google_fonts: ^4.0.1
 
   core:
     path: ../core

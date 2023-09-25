@@ -16,12 +16,35 @@ class InfluencerModelAdapter extends TypeAdapter<InfluencerModel> {
     final fields = <int, dynamic>{
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
-    return InfluencerModel();
+    return InfluencerModel(
+      image: fields[0] as String?,
+      name: fields[1] as String?,
+      country: fields[2] as String?,
+      price: fields[3] as int?,
+      time: fields[4] as String?,
+      followers: fields[5] as String?,
+      posts: fields[6] as int?,
+    );
   }
 
   @override
   void write(BinaryWriter writer, InfluencerModel obj) {
-    writer.writeByte(0);
+    writer
+      ..writeByte(7)
+      ..writeByte(0)
+      ..write(obj.image)
+      ..writeByte(1)
+      ..write(obj.name)
+      ..writeByte(2)
+      ..write(obj.country)
+      ..writeByte(3)
+      ..write(obj.price)
+      ..writeByte(4)
+      ..write(obj.time)
+      ..writeByte(5)
+      ..write(obj.followers)
+      ..writeByte(6)
+      ..write(obj.posts);
   }
 
   @override
