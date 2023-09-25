@@ -55,17 +55,28 @@ class SettingsForm extends StatelessWidget {
                       }
                       if (state.userInfo.imageUrl != '') {
                         return SizedBox(
-                          width: AppDimens.size_130,
-                          height: AppDimens.size_130,
-                          child: ClipRRect(
-                            borderRadius:
-                                BorderRadius.circular(AppDimens.radius_100),
-                            child: Image.network(
-                              state.userInfo.imageUrl,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        );
+                            width: AppDimens.size_130,
+                            height: AppDimens.size_130,
+                            child: ClipRRect(
+                              borderRadius:
+                                  BorderRadius.circular(AppDimens.radius_100),
+                              // child: Image.network(
+                              //   state.userInfo.imageUrl,
+                              //   fit: BoxFit.cover,
+                              // ),
+                              // child: FadeInImage.assetNetwork(
+                              //   placeholder: '', // Путь к изображению-заглушке
+                              //   image: state.userInfo
+                              //       .imageUrl, // URL реального изображения
+                              // )),
+                              child: CachedNetworkImage(
+                                imageUrl: state.userInfo.imageUrl,
+                                placeholder: (context, url) =>
+                                    const CircularProgressIndicator(),
+                                errorWidget: (context, url, error) =>
+                                    const Icon(Icons.error),
+                              ),
+                            ));
                       }
                       return Container(
                         alignment: Alignment.center,
@@ -116,10 +127,18 @@ class SettingsForm extends StatelessWidget {
                             AppConstants.hello.toUpperCase(),
                             style: AppFonts.labelText,
                           ),
-                          Text(
-                            state.userInfo.name,
-                            style: AppFonts.title,
-                          ),
+                          state.isLoading
+                              ? Center(
+                                  child: CircularProgressIndicator(
+                                    valueColor: AlwaysStoppedAnimation<Color>(
+                                      Theme.of(context).focusColor,
+                                    ),
+                                  ),
+                                )
+                              : Text(
+                                  state.userInfo.name,
+                                  style: AppFonts.title,
+                                ),
                         ],
                       ),
                     ),

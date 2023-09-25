@@ -56,12 +56,17 @@ class SettingsBloc extends Bloc<SettingsEvent, SettingsState> {
       InitialEvent event, Emitter<SettingsState> emit) async {
     try {
       emit(
-        state.copyWith(error: null),
+        state.copyWith(
+          error: null,
+          isLoading: true,
+        ),
       );
       final UserEntity userInfo =
           await _getUserUseCase.execute(const NoParams());
-      // await _getimageUseCase.execute(const NoParams());
-      emit(state.copyWith(userInfo: userInfo));
+      emit(state.copyWith(
+        userInfo: userInfo,
+        isLoading: false,
+      ));
     } catch (ex) {
       emit(
         state.copyWith(error: ex),
